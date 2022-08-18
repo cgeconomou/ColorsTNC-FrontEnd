@@ -1,0 +1,9 @@
+.headerTitle{
+  text-align: center;
+  font-family: san;
+  color: rgb(23, 21, 21, 0.45);
+}
+
+.myCarousel{
+  height: 650px;
+}

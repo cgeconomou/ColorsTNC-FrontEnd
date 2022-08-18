@@ -1,0 +1,29 @@
+
+
+<div class="container">
+  <button class="btn btn-primary mb-3 mx-5" (click)="createCustomerService.showCreateCustomerForm = true">Create</button>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th>Photo</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Formulas</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>.!.</td>
+        <td>Nikos</td>
+        <td>@gmail.com</td>
+        <td>4</td>
+        <td><button (click)="DetailsView()" class="btn btn-info">View</button></td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<app-create-customer *ngIf="createCustomerService.showCreateCustomerForm"></app-create-customer>

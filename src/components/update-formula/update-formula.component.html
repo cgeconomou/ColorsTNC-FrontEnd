@@ -1,0 +1,34 @@
+<div>
+  <div id="container2">
+    <div id="header2">
+      Update Formula
+    </div>
+    <div id="content2">
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth">Name</span>
+        <input [(ngModel)]="onUpdateFormula.FormulaName" type="text" class="form-control" placeholder="Give Name"  />
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth" id="basic-addon1">Photo</span>
+        <input  type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth">ServiceType</span>
+        <input [(ngModel)]="onUpdateFormula.ServiceType" type="text" class="form-control"  />
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth">Duration</span>
+        <input [(ngModel)]="onUpdateFormula.Duration" type="text" class="form-control"  />
+      </div>
+      <div class="input-group  mb-3">
+        <span class="input-group-text mySpanWidth">Cost</span>
+        <input [(ngModel)]="onUpdateFormula.Cost" type="number" class="form-control"  />
+      </div>
+    </div>
+    <div id="actions2">
+      <button class="btn btn-success"
+        (click)="UpdateFormulaHandler()">
+        Save</button>
+      <button class="btn btn-danger" (click)="updateFormulaService.showUpdateForm = false" >Exit</button>
+    </div>
+  </div>
