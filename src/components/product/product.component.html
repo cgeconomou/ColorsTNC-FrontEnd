@@ -1,0 +1,41 @@
+<div class="container">
+  <div>
+    <button class="btn btn-primary mb-3">Create</button>
+  </div>
+  <table class="table table-hover text-center">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Brand</th>
+        <th>Code</th>
+        <th>UsedQuantity</th>
+        <th>TubeQuantity</th>
+        <th>Exp Date</th>
+        <th>Formulas</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td class="align-middle">{{product.ID}}</td>
+        <td class="align-middle">{{product.Brand}}</td>
+        <td class="align-middle">{{product.ColorCode}}</td>
+        <td class="align-middle">{{product.UsedQuantity}}</td>
+        <td class="align-middle">{{product.TubeQuantity}}</td>
+        <td class="align-middle">{{product.ExpDate | date:'d-M-yyyy'}}</td>
+        <td>
+          <select class="form-select">
+            <option class="text-center">ths fwtias </option>
+            <option class="text-center">ths zesths</option>
+          </select>
+        </td>
+        <td>
+          <div class="align-middle">
+            <button class="btn btn-sm btn-primary mx-2">Edit</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -14,11 +14,11 @@ import { HomePageComponent } from '../components/home-page/home-page.component';
 import { DetailsCustomerComponent } from '../components/details-customer/details-customer.component';
 import { FormulaComponent } from '../components/formula/formula.component';
 import { CreateCustomerComponent } from '../components/modals/create-customer/create-customer.component';
-import { CreateFormulaComponent } from '../components/modals/create-formula/create-formula.component';
+import { CreateFormulaComponent } from '../components/modals/formula/create-formula/create-formula.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { UpdateFormulaComponent } from 'src/components/update-formula/update-formula.component';
-
-
+import { UpdateFormulaComponent } from 'src/components/modals/formula/update-formula/update-formula.component';
+import { UploadPhotoComponent } from 'src/components/upload-photo/upload-photo.component';
+import { ProductComponent } from '../components/product/product.component';
 
 
 
@@ -36,6 +36,8 @@ import { UpdateFormulaComponent } from 'src/components/update-formula/update-for
     CreateCustomerComponent,
     CreateFormulaComponent,
     UpdateFormulaComponent,
+    UploadPhotoComponent,
+    ProductComponent,
   
   ],
   imports: [
@@ -46,7 +48,7 @@ import { UpdateFormulaComponent } from 'src/components/update-formula/update-for
     RouterModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UploadPhotoComponent,ProductComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

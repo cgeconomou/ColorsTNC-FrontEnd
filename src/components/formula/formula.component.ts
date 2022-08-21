@@ -1,9 +1,11 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { CreateFormulaService } from '../modals/create-formula/create-formula.service';
-import { UpdateFormulaService } from '../update-formula/update-formula.service';
+import { CreateFormulaService } from '../modals/formula/create-formula/create-formula.service';
+import { UpdateFormulaService } from '../modals/formula/update-formula/update-formula.service';
 import { FormulaService } from './formula.service';
-import { Formula } from './model';
+import { Formula } from '../models/formula';
+import { ProductComponent } from '../product/product.component';
+import { Product } from '../models/product';
 
 
 @Component({
@@ -13,17 +15,18 @@ import { Formula } from './model';
 })
 export class FormulaComponent implements OnInit, OnChanges {
 
-  formulas!: Array<Formula>;
+  formulas!: Formula[];
   selectedFormula!: Formula;
+  productsBrands!:string[];
  
-  constructor(private formulaService:FormulaService,private router:Router, public createFormulaService:CreateFormulaService, public updateFormulaService:UpdateFormulaService) { }
+  constructor(private productComponent:ProductComponent,private formulaService:FormulaService,private router:Router, public createFormulaService:CreateFormulaService, public updateFormulaService:UpdateFormulaService) { }
 
   GetAllFormulasHandler(){
     this.formulaService.GetFormulas().subscribe(
       {
         next: response=> this.formulas = response,
         error: error => console.log(error),
-        complete: () => console.log("Done")
+        complete: () => console.log("Formula Done")
       }
     )
   }
@@ -42,6 +45,12 @@ export class FormulaComponent implements OnInit, OnChanges {
       }
     )
   }
+
+  GetProductsBrands():Product[]{
+    let products= this.productComponent.GetProductsHandler()
+    this.productsBrands = products.map(x=>x.Brand);
+    return products;
+   }
   
 
   DetailsFormula(){
@@ -50,6 +59,7 @@ export class FormulaComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.GetAllFormulasHandler();
+    this.GetProductsBrands();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

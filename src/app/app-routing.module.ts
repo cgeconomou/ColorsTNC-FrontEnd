@@ -5,6 +5,7 @@ import { CustomersComponent } from 'src/components/customers/customers.component
 import { DetailsCustomerComponent } from 'src/components/details-customer/details-customer.component';
 import { FormulaComponent } from 'src/components/formula/formula.component';
 import { HomePageComponent } from 'src/components/home-page/home-page.component';
+import { ProductComponent } from 'src/components/product/product.component';
 
 
 const routes: Routes = 
@@ -13,6 +14,7 @@ const routes: Routes =
   {path:"AboutUs",component:AboutusComponent},
   {path:"Customers",component:CustomersComponent},
   {path:"Details-Customer",component:DetailsCustomerComponent},
+  {path:"Product",component:ProductComponent},
   {path:"Formula",component:FormulaComponent},
  
 ];
