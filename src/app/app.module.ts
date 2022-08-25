@@ -19,6 +19,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UpdateFormulaComponent } from 'src/components/modals/formula/update-formula/update-formula.component';
 import { UploadPhotoComponent } from 'src/components/upload-photo/upload-photo.component';
 import { ProductComponent } from '../components/product/product.component';
+import { CreateProductComponent } from '../components/modals/product/create-product/create-product.component';
+import { UpdateProductComponent } from '../components/modals/product/update-product/update-product.component';
 
 
 
@@ -38,6 +40,8 @@ import { ProductComponent } from '../components/product/product.component';
     UpdateFormulaComponent,
     UploadPhotoComponent,
     ProductComponent,
+    CreateProductComponent,
+    UpdateProductComponent,
   
   ],
   imports: [
@@ -48,7 +52,7 @@ import { ProductComponent } from '../components/product/product.component';
     RouterModule,
     HttpClientModule
   ],
-  providers: [UploadPhotoComponent,ProductComponent],
+  providers: [UploadPhotoComponent,ProductComponent,CreateProductComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

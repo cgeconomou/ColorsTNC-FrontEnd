@@ -1,0 +1,37 @@
+<div>
+  <div id="container">
+    <div id="header">
+      Update new Product
+    </div>
+    <div id="content">
+      <!-- <div class="input-group mb-3">
+        <app-upload-photo></app-upload-photo>
+      </div> -->
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth">Brand</span>
+        <input [(ngModel)]="onUpdateProduct.Brand" type="text" class="form-control" />
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth" id="basic-addon1">ColorCode</span>
+        <input [(ngModel)]="onUpdateProduct.ColorCode" type="text" class="form-control">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth">UsedQuantity</span>
+        <input [(ngModel)]="onUpdateProduct.UsedQuantity" type="number" class="form-control" />
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth">TubeQuantity</span>
+        <input [(ngModel)]="onUpdateProduct.TubeQuantity" type="number" class="form-control" />
+      </div>
+      <div class="input-group  mb-3">
+        <span class="input-group-text mySpanWidth">ExpDate</span>
+        <input [(ngModel)]="expDate" type="date" class="form-control" />
+      </div>
+    </div>
+    <div id="actions">
+      <button class="btn btn-success" (click)="UpdateProductHandler()">
+        Save</button>
+      <button class="btn btn-danger" (click)="updateProduct.showUpdateProductForm = false">Exit</button>
+    </div>
+  </div>
+</div>

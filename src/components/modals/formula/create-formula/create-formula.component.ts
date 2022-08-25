@@ -25,7 +25,8 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
 
   CreateFormulaHandler(formulaName:string, formulaServiceType:string, formulaDuration:string,formulaCost:number):void{
     let formulaDate;
-    console.log(this.selectedProductsFormula)
+    console.log();
+    
     // this.photoService?.OnUpload();
     // this.createFormulaService.showCreateFormulaForm = false;
     this.formulaService.CreateFormula({FormulaName:formulaName, CreationDate:formulaDate, Duration:formulaDuration, Cost:formulaCost, ServiceType:formulaServiceType, Products:this.selectedProductsFormula}as Formula)
@@ -40,14 +41,12 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
 
   GetingProductsBrand():void{
     this.products = this.formulaComponent.GetProductsBrands()
-    console.log(this.products)
+   
   }
 
   ngOnInit(): void {
     this.GetingProductsBrand();
   }
-
- 
 
   ngOnDestroy(): void {
    

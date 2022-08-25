@@ -19,4 +19,18 @@ export class ProductService {
   GetProducts():Observable<Product[]>{
     return this.httpService.get<Product[]>(this.URL);
   }
+
+  CreateProduct(myProduct:Product):Observable<Product>{
+    return this.httpService.post<Product>(this.URL,myProduct,this.httpOptions)
+  }
+
+  UpdateProduct(myProduct:Product){
+    const url = `${this.URL}/${myProduct.ID}`;
+    return this.httpService.put<Product>(url, myProduct, this.httpOptions);
+  }
+
+  DeleteProduct(id:number){
+    const url = `${this.URL}/${id}`;
+    return this.httpService.delete<Product>(url,this.httpOptions);
+  }
 }

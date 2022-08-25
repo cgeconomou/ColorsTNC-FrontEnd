@@ -7,5 +7,5 @@ export interface Product{
   UsedQuantity:number;
   ExpDate:Date;
   TubeQuantity:number;
-  Formulas:Formula[];
+  Formulas:Formula[] | null;
 }

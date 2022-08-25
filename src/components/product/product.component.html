@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <button class="btn btn-primary mb-3">Create</button>
+    <button class="btn btn-primary mb-3" (click)="createProductService.showCreateProductForm = true">Create</button>
   </div>
   <table class="table table-hover text-center">
     <thead>
@@ -11,7 +11,6 @@
         <th>UsedQuantity</th>
         <th>TubeQuantity</th>
         <th>Exp Date</th>
-        <th>Formulas</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -24,18 +23,15 @@
         <td class="align-middle">{{product.TubeQuantity}}</td>
         <td class="align-middle">{{product.ExpDate | date:'d-M-yyyy'}}</td>
         <td>
-          <select class="form-select">
-            <option class="text-center">ths fwtias </option>
-            <option class="text-center">ths zesths</option>
-          </select>
-        </td>
-        <td>
           <div class="align-middle">
-            <button class="btn btn-sm btn-primary mx-2">Edit</button>
-            <button class="btn btn-sm btn-danger">Delete</button>
+            <button class="btn btn-sm btn-primary mx-2" (click)="UpdateProdcutHandler(product)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="DeleteProductHandler(product.ID)">Delete</button>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<app-create-product *ngIf="createProductService.showCreateProductForm"></app-create-product>
+<app-update-product *ngIf="updateProductService.showUpdateProductForm" [onUpdateProduct]="selectedProduct"></app-update-product>

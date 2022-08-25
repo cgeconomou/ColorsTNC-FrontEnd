@@ -1,0 +1,38 @@
+<div >
+  <div id="container">
+    <div id="header">
+      Add new Product
+    </div>
+    <div id="content">
+      <!-- <div class="input-group mb-3">
+        <app-upload-photo></app-upload-photo>
+      </div> -->
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth">Brand</span>
+        <input type="text" class="form-control" #productBrand />
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth" id="basic-addon1">ColorCode</span>
+        <input type="text" class="form-control"  #productColorCode>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth">UsedQuantity</span>
+        <input type="number" class="form-control" #productUsedQuantity />
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text mySpanWidth">TubeQuantity</span>
+        <input type="number" class="form-control" #productTubeQuantity />
+      </div>
+      <div class="input-group  mb-3">
+        <span class="input-group-text mySpanWidth">ExpDate</span>
+        <input type="date" class="form-control" [(ngModel)]="expDate" />
+      </div>
+    </div>
+    <div id="actions">
+      <button class="btn btn-success"
+        (click)="CreateProductHandler(productBrand.value, productColorCode.value, productUsedQuantity.valueAsNumber, productTubeQuantity.valueAsNumber)">
+        Create</button>
+      <button class="btn btn-danger" (click)="createProductService.showCreateProductForm = false">Exit</button>
+    </div>
+  </div>
+</div>
