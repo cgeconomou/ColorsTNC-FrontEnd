@@ -8,7 +8,7 @@ import { Formula } from '../models/formula';
 })
 export class FormulaService {
 
-  private URL = "https://localhost:44321/api/ColorFormula";
+  private URL = 'https://localhost:44321/api/ColorFormula';
   httpOptions = {
     headers: new HttpHeaders({'content-Type':'application/json'})
   }
@@ -19,9 +19,9 @@ export class FormulaService {
   }
 
   CreateFormula(myFormula:Formula):Observable<Formula>{
-    console.log(myFormula);
     return this.httpService.post<Formula>(this.URL, myFormula, this.httpOptions);
   }
+
 
   UpdateFormula(myFormula:Formula){
     const url = `${this.URL}/${myFormula.ColorFormulaID}`

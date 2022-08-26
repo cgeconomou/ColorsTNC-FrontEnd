@@ -4,9 +4,10 @@ export interface Formula{
   ColorFormulaID:number;
   FormulaName:string;
   CreationDate:Date | undefined;
-  Duration:string;
   Cost:number;
+  Duration:string;
   ServiceType:string;
+  FormulasPhotosid:number;
   Products:Product[];
 }
 

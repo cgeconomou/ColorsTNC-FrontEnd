@@ -8,6 +8,11 @@
         <app-upload-photo></app-upload-photo>
       </div> -->
       <div class="input-group mb-3">
+        <img [src]="imageUrl" style="width:150px;height:150px">
+        <input type="file" (change)="OnFileSelected($event)" (change)="handleFileInput($any($event.target).files)">
+        <input type="button" class="btn btn-sm btn-success" value="upload" (click)="UploadPhotoHandler()">
+      </div>
+      <div class="input-group mb-3">
         <span class="input-group-text mySpanWidth">Name</span>
         <input type="text" class="form-control" #formulaName />
       </div>
@@ -30,7 +35,7 @@
       <div class="input-group  mb-3">
         <span class="input-group-text mySpanWidth">Products</span>
         <select class="form-select" [(ngModel)]="selectedProductsFormula">
-          <option *ngFor="let product of products" >{{product.Brand}}</option>
+          <option *ngFor="let product of products">{{product.Brand}}</option>
         </select>
       </div>
     </div>
