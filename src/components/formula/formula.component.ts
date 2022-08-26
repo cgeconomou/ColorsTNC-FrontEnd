@@ -48,7 +48,6 @@ export class FormulaComponent implements OnInit, OnChanges {
 
   GetProductsBrands():Product[]{
     let products= this.productComponent.GetProductsHandler()
-
     return products;
    }
   
