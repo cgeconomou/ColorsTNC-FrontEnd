@@ -17,16 +17,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let formula of formulas">
-        <td class="align-middle">.!.</td>
+      <tr *ngFor="let formula of formulas" >
+        <td class="align-middle" ><img src="" style="width:150px;height:150px"></td>
         <td class="align-middle">{{formula?.ColorFormulaID}}</td>
         <td class="align-middle">{{formula?.FormulaName}}</td>
         <td class="align-middle">{{formula?.CreationDate | date:'d-M-yyyy'}}</td>
         <td class="align-middle">{{formula?.Duration}}min</td>
         <td class="align-middle">{{formula?.Cost}}&euro;</td>
         <td class="align-middle">{{formula?.ServiceType}}</td>
-        <td>
-          <select class="form-select">
+        <td class="align-middle">
+          <select class="form-select ">
             <option class="text-center" *ngFor="let product of formula?.Products">{{product.Brand}}</option>
           </select>
         </td>

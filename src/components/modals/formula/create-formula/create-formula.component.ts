@@ -45,6 +45,9 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
     this.photoFormulaid = this.photo.Id;
     console.log("edw einai to id tis photos")
     console.log(this.photoFormulaid)
+    console.log("edw einai to file tis photos")
+    console.log(this.photo.ImageContent);
+
     this.formulaService.CreateFormula({ FormulaName: formulaName, CreationDate: formulaDate,Cost: formulaCost, Duration: formulaDuration, ServiceType: formulaServiceType, FormulasPhotosid: this.photoFormulaid, Products: this.productTest } as Formula)
       .subscribe(
         {

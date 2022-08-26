@@ -1,4 +1,4 @@
 export interface Photo{
     Id:number,
-    File:File|null
+    ImageContent:File|null
 };
