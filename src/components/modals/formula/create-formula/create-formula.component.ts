@@ -7,8 +7,9 @@ import { UploadPhotoComponent } from 'src/components/upload-photo/upload-photo.c
 import { Product } from 'src/components/models/product';
 import { ProductComponent } from 'src/components/product/product.component';
 import { FormulaComponent } from 'src/components/formula/formula.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Photo } from 'src/components/models/formulaPhoto';
+import { Observable, Subscriber } from 'rxjs';
 
 
 @Component({
@@ -28,7 +29,10 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
   image = new Array<string>(4);
   filedata !:FormData;
   photoFormulaid!:number;
+  photoFormulaFile!:any;
   photo!:Photo;
+  photoUrl!:string;
+  formulaImage!: string;
 
   constructor(private formulaComponent: FormulaComponent, public createFormulaService: CreateFormulaService, private formulaService: FormulaService, public photoService: UploadPhotoComponent | null,private http : HttpClient) { }
 
@@ -47,8 +51,10 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
     console.log(this.photoFormulaid)
     console.log("edw einai to file tis photos")
     console.log(this.photo.ImageContent);
-
-    this.formulaService.CreateFormula({ FormulaName: formulaName, CreationDate: formulaDate,Cost: formulaCost, Duration: formulaDuration, ServiceType: formulaServiceType, FormulasPhotosid: this.photoFormulaid, Products: this.productTest } as Formula)
+    console.log("edw einai to path tis photos")
+    this.photoUrl = this.setSingleImage(this.photo.Id);
+    console.log(typeof(this.photo.ImageContent))
+    this.formulaService.CreateFormula({ FormulaName: formulaName, CreationDate: formulaDate,Cost: formulaCost, Duration: formulaDuration, ServiceType: formulaServiceType, FormulasPhotosid: this.photoFormulaid,FormulasPhotosUrl:this.formulaImage, Products: this.productTest } as Formula)
       .subscribe(
         {
           next: response => console.log(response),
@@ -66,13 +72,40 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
     this.http.post('https://localhost:44321/api/ImageFormula', filedata)
     .subscribe(
       {
-        next: response =>{ console.log(response),this.photo=response as Photo},
+        next: response =>{this.photo=response as Photo},
         error: error => console.log(error),
         complete: () => { console.log("Create Done") }
       }
       
     )
+
     return this.photo;
+  }
+
+  
+  setSingleImage(imageId: number): string {
+   
+    const headers = new HttpHeaders();
+    this.http.get('https://localhost:44321/api/ImageFormula?id=' + imageId, { headers, responseType: 'blob' })
+      .subscribe((data: Blob) => {
+        const observable = new Observable((subscriber: Subscriber<any>) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(data);
+          reader.onloadend = function () {
+            subscriber.next(reader.result);
+            subscriber.complete();
+          }
+        });
+        observable.subscribe(img => {
+          console.log("auto einai to img")
+          this.formulaImage = img;
+          console.log(img)
+        });
+      });
+      console.log("autp eiani to this formula")
+      
+      console.log(this.formulaImage)
+    return this.formulaImage;
   }
 
 GettingPhotoId(){

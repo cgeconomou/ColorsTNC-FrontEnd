@@ -18,7 +18,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let formula of formulas" >
-        <td class="align-middle" ><img src="" style="width:150px;height:150px"></td>
+        <td class="align-middle" ><img [src]="formula.FormulasPhotosUrl" style="width:150px;height:150px"></td>
         <td class="align-middle">{{formula?.ColorFormulaID}}</td>
         <td class="align-middle">{{formula?.FormulaName}}</td>
         <td class="align-middle">{{formula?.CreationDate | date:'d-M-yyyy'}}</td>

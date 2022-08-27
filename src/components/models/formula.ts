@@ -8,6 +8,7 @@ export interface Formula{
   Duration:string;
   ServiceType:string;
   FormulasPhotosid:number;
+  FormulasPhotosUrl:string;
   Products:Product[];
 }
 

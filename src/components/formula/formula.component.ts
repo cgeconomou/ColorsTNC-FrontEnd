@@ -19,69 +19,73 @@ export class FormulaComponent implements OnInit, OnChanges {
 
   formulas!: Formula[];
   selectedFormula!: Formula;
-  productsBrands!:string[];
+  productsBrands!: string[];
   imageUrl: string = "assets/Images/uploadPhoto.jpg";
- 
-  constructor(private http:HttpClient, private productComponent:ProductComponent,private formulaService:FormulaService,private router:Router, public createFormulaService:CreateFormulaService, public updateFormulaService:UpdateFormulaService) { }
+  images!: Array<string>;
+  constructor(private http: HttpClient, private productComponent: ProductComponent, private formulaService: FormulaService, private router: Router, public createFormulaService: CreateFormulaService, public updateFormulaService: UpdateFormulaService) { }
 
-  GetAllFormulasHandler(){
+  GetAllFormulasHandler() {
     this.formulaService.GetFormulas().subscribe(
       {
-        next: response=> this.formulas = response,
+        next: response => this.formulas = response,
         error: error => console.log(error),
         complete: () => console.log("Formula Done")
       }
     )
-  }
-  setSingleImage(imageId:number):string{
-    let formulaImage!:string;
-    const headers = new HttpHeaders();
-    this.http.get('https://localhost:44321/api/ImageFormula?id='+imageId,{headers,  responseType: 'blob'})
-    .subscribe((data: Blob) =>{
-      const observable = new Observable((subscriber: Subscriber<any>) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(data);
-      reader.onloadend = function(){
-        subscriber.next(reader.result);
-        subscriber.complete();
-      }        
-    });
-    observable.subscribe(img=>{
-      this.imageUrl = img;
-    });      
-  });
-  return this.imageUrl;
-}
 
-  UpadateFormulaHandler(formula:Formula){
+  }
+
+  setSingleImage(imageId: number): string {
+    let formulaImage!: string;
+    const headers = new HttpHeaders();
+    this.http.get('https://localhost:44321/api/ImageFormula?id=' + imageId, { headers, responseType: 'blob' })
+      .subscribe((data: Blob) => {
+        const observable = new Observable((subscriber: Subscriber<any>) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(data);
+          reader.onloadend = function () {
+            subscriber.next(reader.result);
+            subscriber.complete();
+          }
+        });
+        observable.subscribe(img => {
+          this.imageUrl = img;
+        });
+      });
+    return this.imageUrl;
+  }
+
+
+
+  UpadateFormulaHandler(formula: Formula) {
     this.selectedFormula = formula;
     this.updateFormulaService.showUpdateForm = true;
   }
 
-  DeleteFormulaHandler(id:number):void{
+  DeleteFormulaHandler(id: number): void {
     this.formulaService.DeleteFormula(id).subscribe(
       {
         next: response => this.GetAllFormulasHandler(),
-        error: error =>console.log(error),
+        error: error => console.log(error),
         complete: () => console.log("formula Delete")
       }
     )
   }
 
-  GetProductsBrands():Product[]{
-    let products= this.productComponent.GetProductsHandler()
+  GetProductsBrands(): Product[] {
+    let products = this.productComponent.GetProductsHandler()
     return products;
-   }
-  
+  }
 
-  DetailsFormula(){
+
+  DetailsFormula() {
     this.router.navigate([''])
   }
 
   ngOnInit(): void {
     this.GetAllFormulasHandler();
     this.GetProductsBrands();
-    this.setSingleImage(1);
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
