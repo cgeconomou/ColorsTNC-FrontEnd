@@ -1,0 +1,28 @@
+<div id="container">
+  <div id="header">
+    Create New Customer
+  </div>
+  <div id="content">
+    <div class="input-group mb-3">
+      <span class="input-group-text mySpanWidth">FullName</span>
+      <input type="text" class="form-control" #customerName />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text mySpanWidth">PhoneNumber</span>
+      <input type="text" class="form-control" #customerPhone />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text mySpanWidth">Email</span>
+      <input type="text" class="form-control" #customerEmail />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text mySpanWidth">Formulas</span>
+      <input type="text" class="form-control" #customerFormulas />
+    </div>
+  </div>
+
+  <div id="actions">
+    <button (click)="CreateCustomerHandler(customerName.value, customerPhone.value, customerEmail.value)" class="btn btn-success">Create Customer</button>
+    <button (click)="createCustomerService.showCreateCustomerForm = false" class="btn btn-danger">Exit</button>
+  </div>
+</div>

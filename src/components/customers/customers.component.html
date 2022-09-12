@@ -7,18 +7,24 @@
       <tr>
         <th>Photo</th>
         <th>Name</th>
+        <th>Phone</th>
         <th>Email</th>
         <th>Formulas</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let customer of customers">
         <td>.!.</td>
-        <td>Nikos</td>
-        <td>@gmail.com</td>
-        <td>4</td>
-        <td><button (click)="DetailsView()" class="btn btn-info">View</button></td>
+        <td>{{customer.FullName}}</td>
+        <td>{{customer.PhoneNumber}}</td>
+        <td>{{customer.Email}}</td>
+        <td>{{customer.FormulaIds | json}}</td>
+        <td>
+          <button (click)="DetailsView()" class="btn btn-info">View</button>
+          <button (click)="DetailsView()" class="btn btn-primary mx-2">Edit</button>
+          <button (click)="DeleteCustomerHandler(customer.Id)" class="btn btn-danger">Delete</button>
+        </td>
         
       </tr>
     </tbody>

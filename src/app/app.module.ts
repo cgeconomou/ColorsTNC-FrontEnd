@@ -13,7 +13,7 @@ import { CustomersComponent } from '../components/customers/customers.component'
 import { HomePageComponent } from '../components/home-page/home-page.component';
 import { DetailsCustomerComponent } from '../components/details-customer/details-customer.component';
 import { FormulaComponent } from '../components/formula/formula.component';
-import { CreateCustomerComponent } from '../components/modals/create-customer/create-customer.component';
+import { CreateCustomerComponent } from '../components/modals/customer/create-customer/create-customer.component';
 import { CreateFormulaComponent } from '../components/modals/formula/create-formula/create-formula.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UpdateFormulaComponent } from 'src/components/modals/formula/update-formula/update-formula.component';
@@ -50,7 +50,8 @@ import { UpdateProductComponent } from '../components/modals/product/update-prod
     FormsModule,
     NgbModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [UploadPhotoComponent,ProductComponent,CreateProductComponent],
   bootstrap: [AppComponent]

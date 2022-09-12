@@ -16,7 +16,6 @@ import { Observable, Subscriber } from 'rxjs';
   styleUrls: ['./formula.component.css']
 })
 export class FormulaComponent implements OnInit, OnChanges {
-
   formulas!: Formula[];
   selectedFormula!: Formula;
   productsBrands!: string[];
@@ -32,7 +31,6 @@ export class FormulaComponent implements OnInit, OnChanges {
         complete: () => console.log("Formula Done")
       }
     )
-
   }
 
   setSingleImage(imageId: number): string {
@@ -73,7 +71,7 @@ export class FormulaComponent implements OnInit, OnChanges {
   }
 
   GetProductsBrands(): Product[] {
-    let products = this.productComponent.GetProductsHandler()
+    let products = this.productComponent.GetProductsHandler();
     return products;
   }
 

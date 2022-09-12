@@ -26,7 +26,7 @@
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text mySpanWidth">Duration</span>
-        <input type="number" class="form-control" #formulaDuration />
+        <input  type="number" class="form-control" #formulaDuration />
       </div>
       <div class="input-group  mb-3">
         <span class="input-group-text mySpanWidth">Cost</span>
@@ -34,9 +34,13 @@
       </div>
       <div class="input-group  mb-3">
         <span class="input-group-text mySpanWidth">Products</span>
-        <select class="form-select" [(ngModel)]="selectedProductsFormula">
-          <option *ngFor="let product of products">{{product.Brand}}</option>
+        <select class="form-select"  [(ngModel)]="selectedProducts" multiple>
+          <option *ngFor="let product of products" [ngValue]="product">{{product.Brand}} </option>
         </select>
+      </div>
+     
+      <div>
+        <button (click)="ShowProductToAdd()" class="btn btn-primary">Add Product</button>
       </div>
     </div>
     <div id="actions">
@@ -46,4 +50,5 @@
       <button class="btn btn-danger" (click)="createFormulaService.showCreateFormulaForm = false">Exit</button>
     </div>
   </div>
+  
 </div>

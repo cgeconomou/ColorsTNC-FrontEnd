@@ -20,7 +20,7 @@ import { Observable, Subscriber } from 'rxjs';
 export class CreateFormulaComponent implements OnInit, OnDestroy {
 
   @Input() formulaProducts!: Formula[];
-  selectedProductsFormula!: string;
+  selectedProducts!: Product[];
   productsBrands!: string[];
   products!: Product[];
   productTest!: Product[];
@@ -33,31 +33,26 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
   photo!:Photo;
   photoUrl!:string;
   formulaImage!: string;
+  showExtraProduct: boolean = false;
+  
 
   constructor(private formulaComponent: FormulaComponent, public createFormulaService: CreateFormulaService, private formulaService: FormulaService, public photoService: UploadPhotoComponent | null,private http : HttpClient) { }
 
+  getFormulaProduct(e:any){
+    console.log(e);
+  }
   
   CreateFormulaHandler(formulaName: string, formulaServiceType: string, formulaDuration: string, formulaCost: number): void {
+    this.createFormulaService.showCreateFormulaForm = false;
     let formulaDate;
-    this.GetingProductsBrand();
-    this.products.forEach(product => {
-      if (product.Brand == this.selectedProductsFormula) {
-        product.Formulas = null;
-        this.productTest = [{ ID: product.ID, Brand: product.Brand, ColorCode: product.ColorCode, UsedQuantity: product.UsedQuantity, ExpDate: product.ExpDate, TubeQuantity: product.TubeQuantity, Formulas: product.Formulas }]
-      }
-    });
+    
     this.photoFormulaid = this.photo.Id;
-    console.log("edw einai to id tis photos")
-    console.log(this.photoFormulaid)
-    console.log("edw einai to file tis photos")
-    console.log(this.photo.ImageContent);
-    console.log("edw einai to path tis photos")
     this.photoUrl = this.setSingleImage(this.photo.Id);
     console.log(typeof(this.photo.ImageContent))
-    this.formulaService.CreateFormula({ FormulaName: formulaName, CreationDate: formulaDate,Cost: formulaCost, Duration: formulaDuration, ServiceType: formulaServiceType, FormulasPhotosid: this.photoFormulaid,FormulasPhotosUrl:this.formulaImage, Products: this.productTest } as Formula)
+    this.formulaService.CreateFormula({ FormulaName: formulaName, CreationDate: formulaDate,Cost: formulaCost, Duration: formulaDuration, ServiceType: formulaServiceType, FormulasPhotosid: this.photoFormulaid,FormulasPhotosUrl:this.formulaImage, Products: this.selectedProducts } as Formula)
       .subscribe(
         {
-          next: response => console.log(response),
+          next: response => {this.formulaComponent.GetAllFormulasHandler() ,console.log(response)},
           error: error => console.log(error),
           complete: () => { console.log("Create Done") }
         }
@@ -114,10 +109,6 @@ GettingPhotoId(){
   console.log(this.photoFormulaid);
 }
 
-
-
-
-
   fileToUpload: any;
   handleFileInput(file: FileList) {
     this.fileToUpload = file.item(0);
@@ -135,7 +126,11 @@ GettingPhotoId(){
 
   GetingProductsBrand(): void {
     this.products = this.formulaComponent.GetProductsBrands()
+  }
 
+  ShowProductToAdd(): void{
+    this.showExtraProduct = !this.showExtraProduct;
+    console.log(this.showExtraProduct);
   }
 
   ngOnInit(): void {

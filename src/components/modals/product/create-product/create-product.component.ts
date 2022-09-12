@@ -13,13 +13,14 @@ export class CreateProductComponent implements OnInit {
 
   
   expDate!:Date;
-  constructor(private productService:ProductService, public createProductService:CreateProductService) { }
+  constructor(private productComponent: ProductComponent, private productService:ProductService, public createProductService:CreateProductService) { }
   
   CreateProductHandler(brand:string, colorCode:string, usedQuantity:number, tubeQuantity:number){
+    this.createProductService.showCreateProductForm = false
     this.productService.CreateProduct({Brand:brand, ColorCode:colorCode, UsedQuantity:usedQuantity, ExpDate:this.expDate, TubeQuantity:tubeQuantity,
       Formulas:null} as Product).subscribe(
         {
-          next: response => console.log(response),
+          next: response => {this.productComponent.GetProductsHandler() ,console.log(response)},
           error: error => console.log(error),
           complete: () => console.log("Create product Done")
         }

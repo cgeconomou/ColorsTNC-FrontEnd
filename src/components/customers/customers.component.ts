@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CreateCustomerService } from '../modals/create-customer/create-customer.service';
+import { CreateCustomerService } from '../modals/customer/create-customer/create-customer.service';
+import { Customer } from '../models/customer';
+import { CustomerService } from './customer.service';
 
 @Component({
   selector: 'app-customers',
@@ -9,13 +11,35 @@ import { CreateCustomerService } from '../modals/create-customer/create-customer
 })
 export class CustomersComponent implements OnInit {
 
-  constructor(private router:Router, public createCustomerService:CreateCustomerService) { }
+  customers!: Customer[];
+  constructor(private customerService: CustomerService, private router:Router, public createCustomerService:CreateCustomerService) { }
 
   DetailsView(){
     this.router.navigate(['/Details-Customer'])
   }
 
+  GetCustomersHandler(): void{
+    this.customerService.GetCustomers().subscribe(
+      {
+        next: response => {console.log(response), this.customers = response},
+        error: error => console.log(error),
+        complete: () => console.log("Get Customers Done")
+      }
+    )
+  }
+
+  DeleteCustomerHandler(id:number): void{
+    this.customerService.DeleteCustomer(id).subscribe(
+      {
+        next: response => this.GetCustomersHandler(),
+        error: error => console.log(error),
+        complete: () => console.log("customer Delete")
+      }
+    )
+  }
+
   ngOnInit(): void {
+    this.GetCustomersHandler()
   }
 
 }
