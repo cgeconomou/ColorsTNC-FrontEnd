@@ -73,6 +73,7 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
       }
       
     )
+    
 
     return this.photo;
   }
