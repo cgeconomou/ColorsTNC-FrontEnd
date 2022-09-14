@@ -17,10 +17,12 @@ import { Observable, Subscriber } from 'rxjs';
 })
 export class FormulaComponent implements OnInit, OnChanges {
   formulas!: Formula[];
+
   selectedFormula!: Formula;
   productsBrands!: string[];
-  imageUrl: string = "assets/Images/uploadPhoto.jpg";
+  emptyImageUrl: string = "assets/Images/uploadPhoto.jpg";
   images!: Array<string>;
+  halfPath: string = "https://localhost:44321/";
   constructor(private http: HttpClient, private productComponent: ProductComponent, private formulaService: FormulaService, private router: Router, public createFormulaService: CreateFormulaService, public updateFormulaService: UpdateFormulaService) { }
 
   GetAllFormulasHandler() {
@@ -31,6 +33,10 @@ export class FormulaComponent implements OnInit, OnChanges {
         complete: () => console.log("Formula Done")
       }
     )
+  }
+
+  ConvertUrlPathToAbsolute(relative:string){
+     
   }
 
   setSingleImage(imageId: number): string {
@@ -47,10 +53,10 @@ export class FormulaComponent implements OnInit, OnChanges {
           }
         });
         observable.subscribe(img => {
-          this.imageUrl = img;
+          this.emptyImageUrl = img;
         });
       });
-    return this.imageUrl;
+    return this.emptyImageUrl;
   }
 
 

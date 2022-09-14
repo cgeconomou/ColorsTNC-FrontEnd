@@ -8,7 +8,7 @@
         <app-upload-photo></app-upload-photo>
       </div> -->
       <div class="input-group mb-3">
-        <img [src]="imageUrl" style="width:150px;height:150px">
+        <img [src]="emptyImageUrl" style="width:150px;height:150px">
         <input type="file" (change)="OnFileSelected($event)" (change)="handleFileInput($any($event.target).files)">
         <input type="button" class="btn btn-sm btn-success" value="upload" (click)="UploadPhotoHandler()">
       </div>

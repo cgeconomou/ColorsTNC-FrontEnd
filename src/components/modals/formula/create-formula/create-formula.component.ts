@@ -10,6 +10,7 @@ import { FormulaComponent } from 'src/components/formula/formula.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Photo } from 'src/components/models/formulaPhoto';
 import { Observable, Subscriber } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
   productsBrands!: string[];
   products!: Product[];
   productTest!: Product[];
-  imageUrl: string = "assets/Images/uploadPhoto.jpg";
+  emptyImageUrl: string = "assets/Images/uploadPhoto.jpg";
   selectedFile!: File[];
   image = new Array<string>(4);
   filedata !:FormData;
@@ -34,9 +35,10 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
   photoUrl!:string;
   formulaImage!: string;
   showExtraProduct: boolean = false;
+  testUrlPhoto!: string;
   
 
-  constructor(private formulaComponent: FormulaComponent, public createFormulaService: CreateFormulaService, private formulaService: FormulaService, public photoService: UploadPhotoComponent | null,private http : HttpClient) { }
+  constructor(private domService: DomSanitizer ,private formulaComponent: FormulaComponent, public createFormulaService: CreateFormulaService, private formulaService: FormulaService, public photoService: UploadPhotoComponent | null,private http : HttpClient) { }
 
   getFormulaProduct(e:any){
     console.log(e);
@@ -46,36 +48,29 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
     this.createFormulaService.showCreateFormulaForm = false;
     let formulaDate;
     
-    this.photoFormulaid = this.photo.Id;
-    this.photoUrl = this.setSingleImage(this.photo.Id);
-    console.log(typeof(this.photo.ImageContent))
-    this.formulaService.CreateFormula({ FormulaName: formulaName, CreationDate: formulaDate,Cost: formulaCost, Duration: formulaDuration, ServiceType: formulaServiceType, FormulasPhotosid: this.photoFormulaid,FormulasPhotosUrl:this.formulaImage, Products: this.selectedProducts } as Formula)
+    this.formulaService.CreateFormula({ FormulaName: formulaName, CreationDate: formulaDate,Cost: formulaCost, Duration: formulaDuration, ServiceType: formulaServiceType, FormulasPhotosid: this.photoFormulaid,FormulasPhotosUrl:this.testUrlPhoto, Products: this.selectedProducts } as Formula)
       .subscribe(
         {
-          next: response => {this.formulaComponent.GetAllFormulasHandler() ,console.log(response)},
+          next: response => {console.log(response)},
           error: error => console.log(error),
-          complete: () => { console.log("Create Done") }
+          complete: () => { console.log("Create Done"),this.formulaComponent.GetAllFormulasHandler()}
         }
       )
   };
 
-  UploadPhotoHandler():Object{
+  UploadPhotoHandler(){
     const filedata=new FormData();
     for(var i=0; i<this.selectedFile.length; i++){
       filedata.append('image', this.selectedFile[i], this.selectedFile[i].name);
     }
-    this.http.post('https://localhost:44321/api/ImageFormula', filedata)
+    this.http.post('https://localhost:44321/api/Photo/UploadFile', filedata)
     .subscribe(
       {
-        next: response =>{this.photo=response as Photo},
+        next: response =>{console.log(response), this.testUrlPhoto = response.toString()},
         error: error => console.log(error),
-        complete: () => { console.log("Create Done") }
-      }
-      
+        complete: () => { console.log("Create Done"),console.log(this.testUrlPhoto) }
+      }  
     )
-    
-
-    return this.photo;
   }
 
   
@@ -104,18 +99,18 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
     return this.formulaImage;
   }
 
-GettingPhotoId(){
-  let photos  =this.UploadPhotoHandler() as Photo;
-  this.photoFormulaid = photos.Id;
-  console.log(this.photoFormulaid);
-}
+// GettingPhotoId(){
+//   let photos  =this.UploadPhotoHandler() as Photo;
+//   this.photoFormulaid = photos.Id;
+//   console.log(this.photoFormulaid);
+// }
 
   fileToUpload: any;
   handleFileInput(file: FileList) {
     this.fileToUpload = file.item(0);
     let reader = new FileReader();
     reader.onload = (event: any) => {
-      this.imageUrl = event.target.result;
+      this.emptyImageUrl = event.target.result;
     }
     reader.readAsDataURL(this.fileToUpload);
   }
