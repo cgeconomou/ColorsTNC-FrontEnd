@@ -8,6 +8,7 @@ import { ProductComponent } from '../product/product.component';
 import { Product } from '../models/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subscriber } from 'rxjs';
+import { DataService } from 'src/app/dataService';
 
 
 @Component({
@@ -17,13 +18,12 @@ import { Observable, Subscriber } from 'rxjs';
 })
 export class FormulaComponent implements OnInit, OnChanges {
   formulas!: Formula[];
-
   selectedFormula!: Formula;
   productsBrands!: string[];
   emptyImageUrl: string = "assets/Images/uploadPhoto.jpg";
   images!: Array<string>;
   halfPath: string = "https://localhost:44321/";
-  constructor(private http: HttpClient, private productComponent: ProductComponent, private formulaService: FormulaService, private router: Router, public createFormulaService: CreateFormulaService, public updateFormulaService: UpdateFormulaService) { }
+  constructor(private dataService: DataService,private http: HttpClient, private productComponent: ProductComponent, private formulaService: FormulaService, private router: Router, public createFormulaService: CreateFormulaService, public updateFormulaService: UpdateFormulaService) { }
 
   GetAllFormulasHandler() {
     this.formulaService.GetFormulas().subscribe(
@@ -35,8 +35,9 @@ export class FormulaComponent implements OnInit, OnChanges {
     )
   }
 
-  ConvertUrlPathToAbsolute(relative:string){
-     
+  DetailsFormulaHandler(formula:Formula):void{
+     this.dataService.SetTransferObject(formula);
+     this.router.navigate(['/Details-Formula'])
   }
 
   setSingleImage(imageId: number): string {

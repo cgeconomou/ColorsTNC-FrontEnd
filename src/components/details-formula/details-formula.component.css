@@ -1,0 +1,32 @@
+.myContainer{
+  display: flex;
+  justify-content:center;
+  
+}
+
+h3{
+  text-align: center;
+}
+
+.box{
+  margin: 10px 100px 0px 50px;
+  width: 200px;
+}
+
+img{
+  width: 200px; 
+}
+
+.title{
+  text-decoration: underline;
+}
+
+ul{
+  
+  list-style-type: none; 
+  margin: 0;
+  padding: 0;
+}
+span{
+  font-weight: bold;
+}

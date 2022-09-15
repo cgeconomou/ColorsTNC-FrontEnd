@@ -21,6 +21,7 @@ import { UploadPhotoComponent } from 'src/components/upload-photo/upload-photo.c
 import { ProductComponent } from '../components/product/product.component';
 import { CreateProductComponent } from '../components/modals/product/create-product/create-product.component';
 import { UpdateProductComponent } from '../components/modals/product/update-product/update-product.component';
+import { DetailsFormulaComponent } from 'src/components/details-formula/details-formula.component';
 
 
 
@@ -42,7 +43,7 @@ import { UpdateProductComponent } from '../components/modals/product/update-prod
     ProductComponent,
     CreateProductComponent,
     UpdateProductComponent,
-  
+    DetailsFormulaComponent
   ],
   imports: [
     BrowserModule,

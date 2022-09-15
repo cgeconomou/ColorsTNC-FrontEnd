@@ -1,0 +1,26 @@
+<h3 class="title">Formula Details</h3>
+<div class="myContainer">
+  <div class="box">
+    <img [src]="selectedFormula.FormulasPhotosUrl!=null ? halfPath + selectedFormula.FormulasPhotosUrl : emptyImageUrl">
+  </div>
+   
+  <div class="box">
+    <h5 class="title">Basic Info</h5>
+    <ul>
+      <li><span>Name: </span>{{selectedFormula.FormulaName}}</li>
+      <li><span>Date: </span>{{selectedFormula.CreationDate | date:'d-M-yyyy'}}</li>
+      <li><span>Cost: </span>{{selectedFormula.Cost}}</li>
+      <li><span>Duration: </span>{{selectedFormula.Duration}}</li>
+      <li><span>Type: </span>{{selectedFormula.ServiceType}}</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h5 class="title">Products</h5>
+    <ul *ngFor="let product of selectedFormula.Products">
+      <li><span>Brand </span>{{product.Brand}}</li>
+      <li><span>Used Quantity: </span>{{product.UsedQuantity}} gr</li>
+      <li><span>Code: </span>{{product.ColorCode}}</li>
+    </ul>
+  </div>
+
+</div>
