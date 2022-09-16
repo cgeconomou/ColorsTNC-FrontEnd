@@ -1,0 +1,93 @@
+body{
+  
+}
+.myBox{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+
+}
+
+.myContainer{
+  width: 80%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.card{
+  width: 400px;
+  height: 500px;
+  margin: 20px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.55), 0 0 50px rgba(0,0,0,0.05) inset;
+  align-items: center;
+}
+
+.productImg{
+  margin-top: 20px;
+ width: 250px;
+ height: 250px;
+}
+
+.productName{
+  font-weight: bold;
+  text-align: center;
+}
+
+.priceDiv{
+ margin-top: 60px;
+}
+
+.productPrice{
+ font-weight: bold;
+ color: #f15a22;
+}
+
+.cartBtn{
+  color:  #f15a22;
+  border: solid 1px;
+  width: 50px;
+}
+
+.cartBtn:hover{
+  color: #fff;
+  background-color: #f15a22;
+}
+
+.myCart{
+ padding-bottom: 4px;
+}
+
+.infoBtn{
+  color: darkgreen;
+  border: solid 1px;
+  width: 50px;
+}
+
+.infoBtn:hover{
+  color: #fff;
+  background-color: darkgreen;
+}
+
+.XButton{
+  border: solid 1px;
+}
+
+.XButton:hover{
+  background-color:#f15a22;
+  color: #fff;
+  transition: 0.1s;
+}
+
+.sortPriceBtn{
+  border: solid 1px;
+}
+
+.sortPriceBtn:hover{
+  background-color: rgb(220, 220, 220);
+}
+  
+
+
+

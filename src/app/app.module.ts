@@ -22,6 +22,9 @@ import { ProductComponent } from '../components/product/product.component';
 import { CreateProductComponent } from '../components/modals/product/create-product/create-product.component';
 import { UpdateProductComponent } from '../components/modals/product/update-product/update-product.component';
 import { DetailsFormulaComponent } from 'src/components/details-formula/details-formula.component';
+import { ShopProductComponent } from '../components/shop-product/shop-product.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 
@@ -43,7 +46,8 @@ import { DetailsFormulaComponent } from 'src/components/details-formula/details-
     ProductComponent,
     CreateProductComponent,
     UpdateProductComponent,
-    DetailsFormulaComponent
+    DetailsFormulaComponent,
+    ShopProductComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,8 @@ import { DetailsFormulaComponent } from 'src/components/details-formula/details-
     NgbModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [UploadPhotoComponent,ProductComponent,CreateProductComponent],
   bootstrap: [AppComponent]

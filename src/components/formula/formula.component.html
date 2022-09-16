@@ -17,9 +17,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let formula of formulas" >
-        
-        <td class="align-middle" ><img [src]="formula.FormulasPhotosUrl!=null ? halfPath + formula.FormulasPhotosUrl : emptyImageUrl"  style="width:150px;height:150px"></td>
+      <tr *ngFor="let formula of formulas">
+        <td class="align-middle"><img
+            [src]="formula.FormulasPhotosUrl!=null ? halfPath + formula.FormulasPhotosUrl : emptyImageUrl"
+            style="width:150px;height:150px"></td>
         <td class="align-middle">{{formula?.ColorFormulaID}}</td>
         <td class="align-middle">{{formula?.FormulaName}}</td>
         <td class="align-middle">{{formula?.CreationDate | date:'d-M-yyyy'}}</td>
@@ -33,7 +34,8 @@
         </td>
         <td class="align-middle">
           <button (click)="UpadateFormulaHandler(formula)" class="btn btn-sm btn-primary">Edit</button>
-          <button (click)="DeleteFormulaHandler(formula.ColorFormulaID)" class="btn btn-danger btn-sm mx-2">Delete</button>
+          <button (click)="DeleteFormulaHandler(formula.ColorFormulaID)"
+            class="btn btn-danger btn-sm mx-2">Delete</button>
           <button (click)="DetailsFormulaHandler(formula)" class="btn btn-sm btn-info ">Details</button>
         </td>
 
@@ -42,5 +44,7 @@
   </table>
 </div>
 
-<app-create-formula *ngIf="createFormulaService.showCreateFormulaForm" [formulaProducts]="formulas"></app-create-formula>
-<app-update-formula *ngIf="updateFormulaService.showUpdateForm" [onUpdateFormula]="selectedFormula"></app-update-formula>
+<app-create-formula *ngIf="createFormulaService.showCreateFormulaForm" [formulaProducts]="formulas">
+</app-create-formula>
+<app-update-formula *ngIf="updateFormulaService.showUpdateForm" [onUpdateFormula]="selectedFormula">
+</app-update-formula>

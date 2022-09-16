@@ -7,6 +7,7 @@ import { DetailsFormulaComponent } from 'src/components/details-formula/details-
 import { FormulaComponent } from 'src/components/formula/formula.component';
 import { HomePageComponent } from 'src/components/home-page/home-page.component';
 import { ProductComponent } from 'src/components/product/product.component';
+import { ShopProductComponent } from 'src/components/shop-product/shop-product.component';
 
 
 const routes: Routes = 
@@ -18,6 +19,7 @@ const routes: Routes =
   {path:"Details-Formula",component:DetailsFormulaComponent},
   {path:"Product",component:ProductComponent},
   {path:"Formula",component:FormulaComponent},
+  {path:"ShopProduct",component:ShopProductComponent},
  
 ];
 

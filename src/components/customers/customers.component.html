@@ -21,9 +21,9 @@
         <td>{{customer.Email}}</td>
         <td>{{customer.FormulaIds | json}}</td>
         <td>
-          <button (click)="DetailsView()" class="btn btn-info">View</button>
-          <button (click)="DetailsView()" class="btn btn-primary mx-2">Edit</button>
-          <button (click)="DeleteCustomerHandler(customer.Id)" class="btn btn-danger">Delete</button>
+          <button (click)="DetailsView()" class="btn btn-info btn-sm">View</button>
+          <button (click)="DetailsView()" class="btn btn-primary btn-sm mx-2">Edit</button>
+          <button (click)="DeleteCustomerHandler(customer.Id)" class="btn btn-danger btn-sm">Delete</button>
         </td>
         
       </tr>
