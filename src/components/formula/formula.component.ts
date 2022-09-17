@@ -37,7 +37,7 @@ export class FormulaComponent implements OnInit, OnChanges {
 
   DetailsFormulaHandler(formula:Formula):void{
      this.dataService.SetTransferObject(formula);
-     this.router.navigate(['/Details-Formula'])
+     this.router.navigate(['/Details-Formula']);
   }
 
   setSingleImage(imageId: number): string {

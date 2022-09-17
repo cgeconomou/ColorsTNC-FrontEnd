@@ -12,7 +12,9 @@ export class ShopProductComponent implements OnInit {
   shopProducts!: ShopProduct[];
   filteredShopProducts!: ShopProduct[];
   distinctCategories!:String[];
+  cartProducts: ShopProduct[] = []
   searchCategory!:string;
+  showCartModal: boolean = false;
   sortPrice: boolean = true;
   emptyImageUrl: string = "assets/Images/uploadPhoto.jpg";
   page: number = 1;
@@ -37,6 +39,17 @@ export class ShopProductComponent implements OnInit {
     ) 
   }
 
+  ShowCart(){
+    this.showCartModal = true;
+  }
+
+  AddToCart(product:ShopProduct){
+    if(product.Quantity > 0){
+      this.cartProducts.push(product);
+      product.Quantity -= 1;
+    }
+  }
+
   SortingProductsByPrice(){
     this.sortPrice = !this.sortPrice;
     if(this.sortPrice){
@@ -49,7 +62,6 @@ export class ShopProductComponent implements OnInit {
 
   onTableDataChange(event: any): void{
     this.page = event;
-    console.log(this.page);
     this.FilterByCategory(this.page);
   }
 

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from './dataService';
 
 @Component({
@@ -7,11 +8,15 @@ import { DataService } from './dataService';
   styleUrls: ['./app.component.css'],
   providers:[DataService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'myApp';
 
-  constructor(private dataService: DataService){
+  constructor(private router: Router){
 
+  }
+
+  ngOnInit(): void {
+    //this.router.navigate(['/Home-Page'])
   }
   
 }

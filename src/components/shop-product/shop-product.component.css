@@ -1,6 +1,17 @@
-body{
-  
+.cartNumber{
+  position: relative;
+  border-radius: 100px;
+  border: solid 1px;
+  height: 22px;
+  width: 22px;
+  text-align: center;
+  bottom: 15px;
+  left: 4px;
+  font-size: 14px;
+  background-color: rgb(174, 174, 174);
+  color: #fff;
 }
+
 .myBox{
  display: flex;
  align-items: center;
@@ -36,7 +47,7 @@ body{
 }
 
 .priceDiv{
- margin-top: 60px;
+ margin-top: 20px;
 }
 
 .productPrice{
@@ -81,12 +92,29 @@ body{
 }
 
 .sortPriceBtn{
-  border: solid 1px;
+  border: solid 1px rgb(205, 205, 205);
+  background-color: #fff;
+  color: rgb(105, 105, 105);
 }
 
 .sortPriceBtn:hover{
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(243, 243, 243);
 }
+
+.sortAndCartBtns{
+  display: flex;
+  justify-content: space-between;
+}
+
+.available{
+  color: darkgreen;
+}
+
+.unavailable{
+  color: #f15a22;
+}
+
+
   
 
 

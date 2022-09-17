@@ -24,6 +24,7 @@ import { UpdateProductComponent } from '../components/modals/product/update-prod
 import { DetailsFormulaComponent } from 'src/components/details-formula/details-formula.component';
 import { ShopProductComponent } from '../components/shop-product/shop-product.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CartComponent } from '../components/cart/cart.component';
 
 
 
@@ -47,7 +48,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CreateProductComponent,
     UpdateProductComponent,
     DetailsFormulaComponent,
-    ShopProductComponent
+    ShopProductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

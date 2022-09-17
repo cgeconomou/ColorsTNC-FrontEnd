@@ -8,6 +8,7 @@ import { ShopProduct } from '../models/shopProduct';
 })
 export class ShopProductService {
 
+  
   private URL = "https://localhost:44321/api/ShopProduct";
   httpOptions = {
     headers: new HttpHeaders({'content-Type': 'application/json'})
