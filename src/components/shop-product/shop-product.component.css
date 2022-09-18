@@ -1,17 +1,4 @@
-.cartNumber{
-  position: relative;
-  border-radius: 100px;
-  border: solid 1px;
-  height: 22px;
-  width: 22px;
-  text-align: center;
-  bottom: 15px;
-  left: 4px;
-  font-size: 14px;
-  background-color: rgb(174, 174, 174);
-  color: #fff;
-}
-
+/* Container Box */
 .myBox{
  display: flex;
  align-items: center;
@@ -27,14 +14,23 @@
   justify-content: center;
 }
 
+/* Card Templates */
 .card{
   width: 400px;
   height: 500px;
   margin: 20px;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.55), 0 0 50px rgba(0,0,0,0.05) inset;
+  box-shadow: 0 1px 11px rgba(0,0,0,0.35), 0 0 50px rgba(0,0,0,0.05) inset;
   align-items: center;
 }
 
+.productImg:hover{
+  width: 243px;
+ height: 243px;
+ transition: 150ms;
+}
+
+
+/* Card Values */
 .productImg{
   margin-top: 20px;
  width: 250px;
@@ -54,11 +50,25 @@
  font-weight: bold;
  color: #f15a22;
 }
+/* ===============  Buttons ============== */
+/* Cart Button */
+.cartNumber{
+  position: relative;
+  border-radius: 100px;
+  border: solid 1px;
+  height: 23px;
+  width: 23px;
+  text-align: center;
+  bottom: 19px;
+  font-size: 15px;
+  background-color: rgb(174, 174, 174);
+  color: #fff;
+}
 
 .cartBtn{
   color:  #f15a22;
   border: solid 1px;
-  width: 50px;
+  width: 55px;
 }
 
 .cartBtn:hover{
@@ -67,13 +77,15 @@
 }
 
 .myCart{
- padding-bottom: 4px;
+ font-size: 22px;
+ margin-bottom: 4px;
 }
 
+/* Info Button */
 .infoBtn{
   color: darkgreen;
   border: solid 1px;
-  width: 50px;
+  width: 55px;
 }
 
 .infoBtn:hover{
@@ -81,6 +93,7 @@
   background-color: darkgreen;
 }
 
+/* Search By Category Clear Button */
 .XButton{
   border: solid 1px;
 }
@@ -91,6 +104,7 @@
   transition: 0.1s;
 }
 
+/* Sort price Button */
 .sortPriceBtn{
   border: solid 1px rgb(205, 205, 205);
   background-color: #fff;
@@ -106,6 +120,8 @@
   justify-content: space-between;
 }
 
+
+/* Available and Unavailable Msgs */
 .available{
   color: darkgreen;
 }

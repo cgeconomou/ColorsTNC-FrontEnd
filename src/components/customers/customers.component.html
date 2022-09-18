@@ -1,7 +1,7 @@
-
-
+<app-loadingSpinner *ngIf="loadingSpinner"></app-loadingSpinner>
 <div class="container">
-  <button class="btn btn-primary mb-3 mx-5" (click)="createCustomerService.showCreateCustomerForm = true">Create</button>
+  <button class="btn btn-primary mb-3 mx-5"
+    (click)="createCustomerService.showCreateCustomerForm = true">Create</button>
   <table class="table text-center">
     <thead>
       <tr>
@@ -25,7 +25,7 @@
           <button (click)="DetailsView()" class="btn btn-primary btn-sm mx-2">Edit</button>
           <button (click)="DeleteCustomerHandler(customer.Id)" class="btn btn-danger btn-sm">Delete</button>
         </td>
-        
+
       </tr>
     </tbody>
   </table>

@@ -12,6 +12,7 @@ import { ProductService } from './product.service';
 })
 export class ProductComponent implements OnInit {
 
+  loadingSpinner: boolean = true;
   products!:Product[];
   showCreateProductForm: boolean = false;
   selectedProduct!: Product;
@@ -21,8 +22,8 @@ export class ProductComponent implements OnInit {
     this.productService.GetProducts().subscribe(
       {
         next: response=> {this.products = response},
-        error: error => console.log(error),
-        complete: () => console.log("Product Done")
+        error: error => {console.log(error),this.loadingSpinner = false},
+        complete: () => {console.log("Product Done"),this.loadingSpinner = false}
       }
     )
     

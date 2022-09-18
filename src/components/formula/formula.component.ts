@@ -17,6 +17,8 @@ import { DataService } from 'src/app/dataService';
   styleUrls: ['./formula.component.css']
 })
 export class FormulaComponent implements OnInit, OnChanges {
+
+  loadingSpinner: boolean = true;
   formulas!: Formula[];
   selectedFormula!: Formula;
   productsBrands!: string[];
@@ -29,8 +31,8 @@ export class FormulaComponent implements OnInit, OnChanges {
     this.formulaService.GetFormulas().subscribe(
       {
         next: response => this.formulas = response,
-        error: error => console.log(error),
-        complete: () => console.log("Formula Done")
+        error: error => {console.log(error),this.loadingSpinner = false},
+        complete: () => {console.log("Formula Done"),this.loadingSpinner = false}
       }
     )
   }

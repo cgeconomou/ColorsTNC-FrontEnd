@@ -1,7 +1,8 @@
 <div class="container">
   <button class="btn btn-primary mb-3 mx-4" (click)="createFormulaService.showCreateFormulaForm = true">Create</button>
 </div>
-<div *ngIf="formulas && formulas.length" class="container">
+<app-loadingSpinner *ngIf="loadingSpinner"></app-loadingSpinner>
+<div  class="container">
   <table class="table table-hover text-center">
     <thead>
       <tr>
@@ -16,8 +17,9 @@
         <th>Actions</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let formula of formulas">
+  
+    <tbody *ngIf="formulas && formulas.length">
+      <tr  *ngFor="let formula of formulas">
         <td class="align-middle"><img
             [src]="formula.FormulasPhotosUrl!=null ? halfPath + formula.FormulasPhotosUrl : emptyImageUrl"
             style="width:150px;height:150px"></td>

@@ -9,6 +9,7 @@ import { ShopProductService } from './shop-product.service';
 })
 export class ShopProductComponent implements OnInit {
 
+  loadingSpinner: boolean = true;
   shopProducts!: ShopProduct[];
   filteredShopProducts!: ShopProduct[];
   distinctCategories!:String[];
@@ -33,8 +34,8 @@ export class ShopProductComponent implements OnInit {
           this.distinctCategories = [...new Set(this.shopProducts.map(x=>x.Category))],
           this.filteredShopProducts = this.shopProducts
         },
-        error: error => {console.log(error)},
-        complete: () => console.log("ShopProduct Done")
+        error: error => {console.log(error),this.loadingSpinner = false},
+        complete: () => {console.log("ShopProduct Done"),this.loadingSpinner = false}
       }
     ) 
   }
@@ -62,7 +63,6 @@ export class ShopProductComponent implements OnInit {
 
   onTableDataChange(event: any): void{
     this.page = event;
-    this.FilterByCategory(this.page);
   }
 
   onTableSizeChange(event: any): void{
@@ -71,12 +71,12 @@ export class ShopProductComponent implements OnInit {
     this.FilterByCategory();
   }
 
-  FilterByCategory(event: any = null): void{
+  FilterByCategory(): void{
     this.filteredShopProducts = this.shopProducts;
     if(this.searchCategory){
       this.filteredShopProducts = this.filteredShopProducts.filter(x=>x.Category.toUpperCase().includes(this.searchCategory.toUpperCase()));
     }
-    this.page = event;
+    this.page = 1;
   }
 
   ShowClearBtn(): void{

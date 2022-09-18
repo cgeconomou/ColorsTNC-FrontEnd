@@ -11,6 +11,7 @@ import { CustomerService } from './customer.service';
 })
 export class CustomersComponent implements OnInit {
 
+  loadingSpinner: boolean = true;
   customers!: Customer[];
   constructor(private customerService: CustomerService, private router:Router, public createCustomerService:CreateCustomerService) { }
 
@@ -22,8 +23,8 @@ export class CustomersComponent implements OnInit {
     this.customerService.GetCustomers().subscribe(
       {
         next: response => {console.log(response), this.customers = response},
-        error: error => console.log(error),
-        complete: () => console.log("Get Customers Done")
+        error: error => {console.log(error),this.loadingSpinner = false},
+        complete: () => {console.log("Get Customers Done"),this.loadingSpinner = false}
       }
     )
   }
