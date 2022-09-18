@@ -1,0 +1,37 @@
+<div>
+  <div id="container">
+    <div id="header" class="mt-3">
+      <span>Το καλάθι σου ({{productsInCartCount}})</span><input (click)="CloseCartModal()" class="exitBtn" type="submit" value="X">
+    </div>
+    <div id="content">
+      <div >
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <!-- <td> <img (error)="this.product.PhotoUrl= emptyImageUrl"
+                [src]="product.PhotoUrl!=null ? product.PhotoUrl : emptyImageUrl"></td> -->
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><button class="btn btn-sm btn-danger"><div class="bi bi-trash"></div></button></td>
+            </tr>
+          </tbody>
+        </table>
+       
+      </div>
+    </div>
+    <div id="actions">
+      <button (click)="ShowCartModal()" class="btn btn-success">Δες το καλάθι σου</button>
+    </div>
+  </div>
+
+</div>

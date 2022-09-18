@@ -1,4 +1,4 @@
-<div>
+<div (mousedown)="HideModal()">
   <div class="container">
     <div class="row mt-5 mb-5">
       <div class="col-sm-3">
@@ -19,7 +19,7 @@
       </div>
       <div>
         <button (click)="ShowCart()" class="btn cartBtn btn-sm">
-          <div class="bi bi-cart myCart" ></div>
+          <div  class="bi bi-cart myCart" ></div>
         </button>
         <input class="cartNumber" value="{{cartProducts.length}}"/>
       </div>
@@ -33,15 +33,15 @@
          itemsPerPage: tableSize,
           currentPage: page,
           totalItems: count
-      }; let i = index">
-        <img class="productImg" (error)="this.product.PhotoUrl= emptyImageUrl"
+      };">
+        <img class="productImg" (click)="ShowProductDetails(product)" (error)="this.product.PhotoUrl= emptyImageUrl"
           [src]="product.PhotoUrl!=null ? product.PhotoUrl : emptyImageUrl">
         <h5 class="form-text mt-4">{{product.Category}}</h5>
         <div class="form-text productName"><span> {{product.Name}}</span></div>
         <div *ngIf="product.Quantity > 0" class="form-text mt-3 available">Διαθέσιμο</div>
         <div *ngIf="product.Quantity == 0" class="form-text mt-3 unavailable">Μη Διαθέσιμο</div>
         <div class="priceDiv">
-          <button class="btn infoBtn btn-sm mx-2">
+          <button (click)="ShowProductDetails(product)" class="btn infoBtn btn-sm mx-2">
             <div  class="bi bi-info-circle myCart"></div>
           </button>
           <button (click)="AddToCart(product)" [disabled]="product.Quantity == 0" class="btn cartBtn btn-sm">
@@ -66,5 +66,7 @@
   </div>
 
   <app-cart *ngIf="showCartModal" [productsInCart]="cartProducts"></app-cart>
+  <app-shop-product-details *ngIf="showProductDetailsModal" [productDetails]="selectedDetailsProduct" ></app-shop-product-details>
+  <app-mini-cart-view *ngIf="showMiniCartView" [productsInCart]="cartProducts"></app-mini-cart-view>
   
 

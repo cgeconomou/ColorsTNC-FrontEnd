@@ -13,9 +13,12 @@ export class ShopProductComponent implements OnInit {
   shopProducts!: ShopProduct[];
   filteredShopProducts!: ShopProduct[];
   distinctCategories!:String[];
-  cartProducts: ShopProduct[] = []
+  cartProducts: ShopProduct[] = [];
+  selectedDetailsProduct!: ShopProduct;
   searchCategory!:string;
   showCartModal: boolean = false;
+  showProductDetailsModal: boolean = false;
+  showMiniCartView: boolean = false;
   sortPrice: boolean = true;
   emptyImageUrl: string = "assets/Images/uploadPhoto.jpg";
   page: number = 1;
@@ -40,8 +43,23 @@ export class ShopProductComponent implements OnInit {
     ) 
   }
 
+  HideModal(){
+   // this.showProductDetailsModal = false;
+    // this.showCartModal = false;
+    // this.showMiniCartView = false;
+  }
+
+  ShowProductDetails(product: ShopProduct){
+    this.showProductDetailsModal = true;
+    this.selectedDetailsProduct = product;
+  }
+
   ShowCart(){
     this.showCartModal = true;
+  }
+
+  ShowProductCartMiniModal(){
+     this.showMiniCartView = !this.showMiniCartView;
   }
 
   AddToCart(product:ShopProduct){

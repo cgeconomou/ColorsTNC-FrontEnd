@@ -1,0 +1,46 @@
+<div>
+  <div id="container">
+    <div id="header" class="mt-3">
+      <span>Το καλάθι σου</span>
+      <input (click)="CloseCartModal()" class="exitBtn" type="submit" value="X">
+    </div>
+    <div id="content">
+      <div class="row">
+        <div class="col-sm-8">
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="align-middle">
+              <tr *ngFor="let product of productsInCart; index as i;">
+                <td> <img class="productImg" (click)="ProductDetails(product)"
+                    (error)="this.product.PhotoUrl= emptyImageUrl"
+                    [src]="product.PhotoUrl!=null ? product.PhotoUrl : emptyImageUrl"></td>
+                <td (click)="ProductDetails(product)" class="productName">{{product.Name}}</td>
+                <td>1</td>
+                <td></td>
+                <td>
+                  <button (click)="RemoveProduct(i)" class="btn btn-sm btn-danger">
+                    <div class="bi bi-trash"></div>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+      </div>
+    </div>
+    <div id="actions">
+
+    </div>
+  </div>
+</div>

@@ -24,8 +24,10 @@ import { UpdateProductComponent } from '../components/modals/product/update-prod
 import { DetailsFormulaComponent } from 'src/components/details-formula/details-formula.component';
 import { ShopProductComponent } from '../components/shop-product/shop-product.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { CartComponent } from '../components/modals/cart/cart.component';
+import { CartComponent } from '../components/modals/shop-Products/cart/cart.component';
 import { LoadingSpinnerComponent } from 'src/components/loading-Spinner/loadingSpinner.component';
+import { ShopProductDetailsComponent } from '../components/modals/shop-Products/shop-product-details/shop-product-details.component';
+import { MiniCartViewComponent } from '../components/modals/shop-Products/mini-cart-view/mini-cart-view.component';
 
 
 
@@ -51,7 +53,9 @@ import { LoadingSpinnerComponent } from 'src/components/loading-Spinner/loadingS
     DetailsFormulaComponent,
     ShopProductComponent,
     CartComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ShopProductDetailsComponent,
+    MiniCartViewComponent
   ],
   imports: [
     BrowserModule,
