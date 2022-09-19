@@ -19,14 +19,14 @@
             </thead>
             <tbody class="align-middle">
               <tr *ngFor="let product of productsInCart; index as i;">
-                <td> <img class="productImg" (click)="ProductDetails(product)"
-                    (error)="this.product.PhotoUrl= emptyImageUrl"
-                    [src]="product.PhotoUrl!=null ? product.PhotoUrl : emptyImageUrl"></td>
-                <td (click)="ProductDetails(product)" class="productName">{{product.Name}}</td>
-                <td>1</td>
+                <td> <img class="productImg" (click)="ProductDetails(product[0])"
+                    (error)="this.product[0].PhotoUrl= emptyImageUrl"
+                    [src]="product[0].PhotoUrl!=null ? product[0].PhotoUrl : emptyImageUrl"></td>
+                <td (click)="ProductDetails(product[0])" class="productName">{{product[0].Name}}</td>
+                <td>{{product.length}}</td>
                 <td></td>
                 <td>
-                  <button (click)="RemoveProduct(i)" class="btn btn-sm btn-danger">
+                  <button (click)="RemoveProduct(i,product[0])" class="btn btn-sm btn-danger">
                     <div class="bi bi-trash"></div>
                   </button>
                 </td>

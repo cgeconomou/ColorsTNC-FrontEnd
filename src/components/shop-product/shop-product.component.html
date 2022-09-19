@@ -21,7 +21,7 @@
         <button (click)="ShowCart()" class="btn cartBtn btn-sm">
           <div  class="bi bi-cart myCart" ></div>
         </button>
-        <input class="cartNumber" value="{{cartProducts.length}}"/>
+        <input class="cartNumber" value="{{this.service.cartProductCount}}"/>
       </div>
     </div>
   </div>
@@ -67,6 +67,6 @@
 
   <app-cart *ngIf="showCartModal" [productsInCart]="cartProducts"></app-cart>
   <app-shop-product-details *ngIf="showProductDetailsModal" [productDetails]="selectedDetailsProduct" ></app-shop-product-details>
-  <app-mini-cart-view *ngIf="showMiniCartView" [productsInCart]="cartProducts"></app-mini-cart-view>
+  <!-- <app-mini-cart-view *ngIf="showMiniCartView" [productsInCart]="cartProducts"></app-mini-cart-view> -->
   
 

@@ -13,7 +13,8 @@ export class ShopProductComponent implements OnInit {
   shopProducts!: ShopProduct[];
   filteredShopProducts!: ShopProduct[];
   distinctCategories!:String[];
-  cartProducts: ShopProduct[] = [];
+  cartProducts: Array<Array<ShopProduct>> = new Array<Array<ShopProduct>>;
+  cartProductArray: ShopProduct[] = [];
   selectedDetailsProduct!: ShopProduct;
   searchCategory!:string;
   showCartModal: boolean = false;
@@ -26,7 +27,7 @@ export class ShopProductComponent implements OnInit {
   tableSize: number = 9;
   tableSizes: number[] = [9, 18, 27, 51];
 
-  constructor(private service: ShopProductService) { }
+  constructor(public service: ShopProductService) { }
 
   GetProductsHandler(){
     this.service.GetShopProducts().subscribe(
@@ -63,10 +64,30 @@ export class ShopProductComponent implements OnInit {
   }
 
   AddToCart(product:ShopProduct){
+    let productExists: boolean = false;
     if(product.Quantity > 0){
-      this.cartProducts.push(product);
+      this.cartProductArray.push(product)
+      if(this.cartProducts.length == 0){
+        this.cartProducts.push(this.cartProductArray);
+        console.log("MPIKA sthn prwth IF = O MEGALOS PINAKAS EINAI ADIOS",this.cartProducts.length);
+      }
+      else{
+        for(let i=0; i<this.cartProducts.length; i++){
+         if(this.cartProducts[i].includes(product)){
+          this.cartProducts[i].push(product);
+          productExists = true;
+          console.log(`MPIKA sthn prwth IF ths FOR = OPOTE VRIKE IDIO PRION,${this.cartProducts[i]} = SUBARRAY` );
+         }
+        }
+        if(productExists == false){
+          this.cartProducts.push(this.cartProductArray);
+          console.log(`MPIKA sthn -2ND- IF ths FOR = OPOTE DEN VRIKE IDIO PRION,${this.cartProducts.length} = MHKOS MEGALOU PINAKA` );
+        }
+      }
       product.Quantity -= 1;
     }
+    this.cartProductArray = [];
+    this.service.cartProductCount +=1; 
   }
 
   SortingProductsByPrice(){
