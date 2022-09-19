@@ -28,6 +28,7 @@ import { CartComponent } from '../components/modals/shop-Products/cart/cart.comp
 import { LoadingSpinnerComponent } from 'src/components/loading-Spinner/loadingSpinner.component';
 import { ShopProductDetailsComponent } from '../components/modals/shop-Products/shop-product-details/shop-product-details.component';
 import { MiniCartViewComponent } from '../components/modals/shop-Products/mini-cart-view/mini-cart-view.component';
+import { PaypalButtonsComponent } from '../components/paypal-buttons/paypal-buttons.component';
 
 
 
@@ -55,7 +56,8 @@ import { MiniCartViewComponent } from '../components/modals/shop-Products/mini-c
     CartComponent,
     LoadingSpinnerComponent,
     ShopProductDetailsComponent,
-    MiniCartViewComponent
+    MiniCartViewComponent,
+    PaypalButtonsComponent
   ],
   imports: [
     BrowserModule,

@@ -27,6 +27,7 @@
   width: 243px;
  height: 243px;
  transition: 150ms;
+ cursor: pointer;
 }
 
 
