@@ -79,7 +79,7 @@ export class FormulaComponent implements OnInit, OnChanges {
     )
   }
 
-  GetProductsBrands(): Product[] {
+  GetProducts(): Product[] {
     let products = this.productComponent.GetProductsHandler();
     return products;
   }
@@ -91,7 +91,7 @@ export class FormulaComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.GetAllFormulasHandler();
-    this.GetProductsBrands();
+    this.GetProducts();
 
   }
 

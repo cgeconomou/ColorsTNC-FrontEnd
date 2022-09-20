@@ -1,0 +1,14 @@
+.createFormulaBtn{
+  background-color: #fff;
+  color:#9f5ba4;
+  border: solid 1px;
+}
+
+.createFormulaBtn:hover{
+  background-color: #b986bd;
+  color: #fff;
+}
+
+.myTableHover:hover{
+  background-color: #eae5e5;
+}

@@ -21,7 +21,7 @@
         <button (click)="ShowCart()" class="btn cartBtn btn-sm">
           <div  class="bi bi-cart myCart" ></div>
         </button>
-        <input class="cartNumber" value="{{this.service.cartProductCount}}"/>
+        <input class="cartNumber" value="{{this.shopService.cartProductCount}}"/>
       </div>
     </div>
   </div>
@@ -38,13 +38,13 @@
           [src]="product.PhotoUrl!=null ? product.PhotoUrl : emptyImageUrl">
         <h5 class="form-text mt-4">{{product.Category}}</h5>
         <div class="form-text productName"><span> {{product.Name}}</span></div>
-        <div *ngIf="product.Quantity > 0" class="form-text mt-3 available">Διαθέσιμο</div>
+        <div *ngIf="product.Quantity > 0" class="form-text mt-3 available">Διαθέσιμο({{product.Quantity}})</div>
         <div *ngIf="product.Quantity == 0" class="form-text mt-3 unavailable">Μη Διαθέσιμο</div>
         <div class="priceDiv">
-          <button (click)="ShowProductDetails(product)" class="btn infoBtn btn-sm mx-2">
+          <button (click)="ShowProductDetails(product)" class="btn infoBtn btn-sm mx-2" title="Λεπτομέριες">
             <div  class="bi bi-info-circle myCart"></div>
           </button>
-          <button (click)="AddToCart(product)" [disabled]="product.Quantity == 0" class="btn cartBtn btn-sm">
+          <button (click)="AddToCart(product)" [disabled]="product.Quantity == 0" class="btn cartBtn btn-sm" title="Προσθήκη στο καλάθι">
             <div class="bi bi-cart-plus myCart"></div>
           </button>
           <span class="productPrice mx-4"> {{product.Price}}&euro;</span>

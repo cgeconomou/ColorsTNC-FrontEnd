@@ -1,0 +1,29 @@
+.createFormulaBtn{
+  background-color: #fff;
+  color:#9f5ba4;
+  border: solid 1px;
+}
+
+.createFormulaBtn:hover{
+  background-color: #b986bd;
+  color: #fff;
+}
+
+.myTableHover:hover{
+  background-color: #eae5e5;
+}
+
+.formulaImg{
+  width:150px;
+  height:150px;
+  border-radius: 6px;
+}
+
+.myProductUl{
+  position: relative;
+  left: 35px;
+}
+
+.myProductLi{
+  text-align: left;
+}

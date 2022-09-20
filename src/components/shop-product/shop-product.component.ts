@@ -27,10 +27,10 @@ export class ShopProductComponent implements OnInit {
   tableSize: number = 9;
   tableSizes: number[] = [9, 18, 27, 51];
 
-  constructor(public service: ShopProductService) { }
+  constructor(public shopService: ShopProductService) { }
 
   GetProductsHandler(){
-    this.service.GetShopProducts().subscribe(
+    this.shopService.GetShopProducts().subscribe(
       {
         next: response=> 
         {
@@ -57,6 +57,7 @@ export class ShopProductComponent implements OnInit {
 
   ShowCart(){
     this.showCartModal = true;
+    this.shopService.cartProductCount = parseFloat(this.shopService.cartProductCount.toFixed(2));
   }
 
   ShowProductCartMiniModal(){
@@ -87,7 +88,8 @@ export class ShopProductComponent implements OnInit {
       product.Quantity -= 1;
     }
     this.cartProductArray = [];
-    this.service.cartProductCount +=1; 
+    this.shopService.cartProductCount +=1;
+    this.shopService.totalCartCost += product.Price;
   }
 
   SortingProductsByPrice(){

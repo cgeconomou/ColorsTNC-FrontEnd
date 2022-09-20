@@ -15,9 +15,14 @@ h3{
 
 img{
   width: 200px; 
+  border-radius: 8px;
 }
 
 .title{
+  text-decoration: underline;
+}
+
+.productBrand{
   text-decoration: underline;
 }
 
@@ -30,3 +35,4 @@ ul{
 span{
   font-weight: bold;
 }
+

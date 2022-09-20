@@ -29,6 +29,8 @@ import { LoadingSpinnerComponent } from 'src/components/loading-Spinner/loadingS
 import { ShopProductDetailsComponent } from '../components/modals/shop-Products/shop-product-details/shop-product-details.component';
 import { MiniCartViewComponent } from '../components/modals/shop-Products/mini-cart-view/mini-cart-view.component';
 import { PaypalButtonsComponent } from '../components/paypal-buttons/paypal-buttons.component';
+import { PaypalFormComponent } from '../components/paypal-form/paypal-form.component';
+import { ReactiveFormsModule } from '@angular/forms'
 
 
 
@@ -57,7 +59,8 @@ import { PaypalButtonsComponent } from '../components/paypal-buttons/paypal-butt
     LoadingSpinnerComponent,
     ShopProductDetailsComponent,
     MiniCartViewComponent,
-    PaypalButtonsComponent
+    PaypalButtonsComponent,
+    PaypalFormComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { PaypalButtonsComponent } from '../components/paypal-buttons/paypal-butt
     RouterModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [UploadPhotoComponent,ProductComponent,CreateProductComponent],
   bootstrap: [AppComponent]

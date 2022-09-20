@@ -1,6 +1,6 @@
 <app-loadingSpinner *ngIf="loadingSpinner"></app-loadingSpinner>
 <div class="container">
-  <button class="btn btn-primary mb-3 mx-5"
+  <button class="btn createFormulaBtn mb-3 mx-5"
     (click)="createCustomerService.showCreateCustomerForm = true">Create</button>
   <table class="table text-center">
     <thead>
@@ -14,16 +14,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let customer of customers">
+      <tr class="myTableHover" *ngFor="let customer of customers">
         <td>.!.</td>
         <td>{{customer.FullName}}</td>
         <td>{{customer.PhoneNumber}}</td>
         <td>{{customer.Email}}</td>
         <td>{{customer.FormulaIds | json}}</td>
         <td>
-          <button (click)="DetailsView()" class="btn btn-info btn-sm">View</button>
-          <button (click)="DetailsView()" class="btn btn-primary btn-sm mx-2">Edit</button>
-          <button (click)="DeleteCustomerHandler(customer.Id)" class="btn btn-danger btn-sm">Delete</button>
+          <button (click)="DetailsView()" class="btn bi bi-info-circle" title="Details"></button>
+          <button (click)="DetailsView()" class="btn bi bi-pen mx-2" title="Edit"></button>
+          <button (click)="DeleteCustomerHandler(customer.Id)" class="btn bi bi-trash" title="Delete"></button>
         </td>
 
       </tr>

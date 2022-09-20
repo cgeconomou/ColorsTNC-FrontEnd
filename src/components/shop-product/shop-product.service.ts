@@ -9,6 +9,7 @@ import { ShopProduct } from '../models/shopProduct';
 export class ShopProductService {
 
   cartProductCount: number = 0;
+  totalCartCost: number = 0;
   private URL = "https://localhost:44321/api/ShopProduct";
   httpOptions = {
     headers: new HttpHeaders({'content-Type': 'application/json'})
@@ -18,6 +19,11 @@ export class ShopProductService {
 
   GetShopProducts():Observable<ShopProduct[]>{
     return this.httpService.get<ShopProduct[]>(this.URL);
+  }
+
+  PutShopProducts(products:ShopProduct[]):Observable<ShopProduct[]>{
+    console.log("Mpika ston PUT!!!");
+    return this.httpService.put<ShopProduct[]>(this.URL,products);
   }
 
 }

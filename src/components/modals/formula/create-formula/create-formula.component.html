@@ -1,6 +1,6 @@
 <div>
   <div id="container">
-    <div id="header">
+    <div id="header" class="">
       Add new Formula
     </div>
     <div id="content">
@@ -10,15 +10,13 @@
       <div class="input-group mb-3">
         <img [src]="emptyImageUrl" style="width:150px;height:150px">
         <input type="file" (change)="OnFileSelected($event)" (change)="handleFileInput($any($event.target).files)">
-        <input type="button" class="btn btn-sm btn-success" value="upload" (click)="UploadPhotoHandler()">
+        <div>
+          <input type="button" class="btn myBtn" value="Upload" (click)="UploadPhotoHandler()">
+        </div>
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text mySpanWidth">Name</span>
         <input type="text" class="form-control" #formulaName />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text mySpanWidth" id="basic-addon1">Photo</span>
-        <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text mySpanWidth">ServiceType</span>
@@ -38,16 +36,12 @@
           <option *ngFor="let product of products" [ngValue]="product">{{product.Brand}} </option>
         </select>
       </div>
-     
-      <div>
-        <button (click)="ShowProductToAdd()" class="btn btn-primary">Add Product</button>
-      </div>
     </div>
     <div id="actions">
-      <button class="btn btn-success"
+      <button class="btn myBtn"
         (click)="CreateFormulaHandler(formulaName.value, formulaServiceType.value, formulaDuration.value, formulaCost.valueAsNumber)">
         Create</button>
-      <button class="btn btn-danger" (click)="createFormulaService.showCreateFormulaForm = false">Exit</button>
+      <button class="btn exitBtn" (click)="createFormulaService.showCreateFormulaForm = false">Exit</button>
     </div>
   </div>
   

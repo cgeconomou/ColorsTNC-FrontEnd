@@ -77,3 +77,28 @@
   text-decoration: underline solid 2.2px;
   cursor: pointer;
 }
+
+
+/* ======== Plus and minus buttons ==========*/
+
+.minusBtn{
+  color:  #f15a22;
+  border: solid 1px;
+  width: 45px;
+}
+
+.minusBtn:hover{
+  color: #fff;
+  background-color: #f15a22!important;
+}
+
+.plusBtn{
+  color: darkgreen;
+  border: solid 1px;
+  width: 45px;
+}
+
+.plusBtn:hover{
+  color: #fff;
+  background-color: darkgreen;
+}

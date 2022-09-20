@@ -1,11 +1,9 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormulaService } from 'src/components/formula/formula.service';
 import { Formula } from 'src/components/models/formula';
 import { CreateFormulaService } from './create-formula.service';
-import { DatePipe } from '@angular/common';
 import { UploadPhotoComponent } from 'src/components/upload-photo/upload-photo.component';
 import { Product } from 'src/components/models/product';
-import { ProductComponent } from 'src/components/product/product.component';
 import { FormulaComponent } from 'src/components/formula/formula.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Photo } from 'src/components/models/formulaPhoto';
@@ -120,8 +118,8 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
 
   }
 
-  GetingProductsBrand(): void {
-    this.products = this.formulaComponent.GetProductsBrands()
+  GettingProducts(): void {
+    this.products = this.formulaComponent.GetProducts()
   }
 
   ShowProductToAdd(): void{
@@ -130,7 +128,7 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.GetingProductsBrand();
+    this.GettingProducts();
   }
 
   ngOnDestroy(): void {

@@ -39,13 +39,13 @@ export class UpdateFormulaComponent implements OnInit {
     )
   }
 
-  GetingProductsBrand(): void {
-    this.products = this.formulaComponent.GetProductsBrands();
+  GetingProducts(): void {
+    this.products = this.formulaComponent.GetProducts();
     
   }
 
   ngOnInit(): void {
-    this.GetingProductsBrand();
+    this.GetingProducts();
   }
 
 

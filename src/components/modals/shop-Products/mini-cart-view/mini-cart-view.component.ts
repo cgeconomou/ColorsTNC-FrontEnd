@@ -9,7 +9,7 @@ import { ShopProductComponent } from 'src/components/shop-product/shop-product.c
 })
 export class MiniCartViewComponent implements OnInit {
 
-  @Input() productsInCart!: ShopProduct[]
+  @Input() productsInCart!: Array<Array<ShopProduct>>
   productsInCartCount!: number;
   emptyImageUrl: string = "assets/Images/uploadPhoto.jpg";
   constructor(private shopCart: ShopProductComponent) { }

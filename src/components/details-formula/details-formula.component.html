@@ -1,7 +1,7 @@
 <h3 class="title">Formula Details</h3>
-<div class="myContainer">
+<div class="myContainer mt-5">
   <div class="box">
-    <img [src]="selectedFormula.FormulasPhotosUrl!=null ? halfPath + selectedFormula.FormulasPhotosUrl : emptyImageUrl">
+    <img class="formulaImg" [src]="selectedFormula.FormulasPhotosUrl!=null ? halfPath + selectedFormula.FormulasPhotosUrl : emptyImageUrl">
   </div>
    
   <div class="box">
@@ -17,7 +17,7 @@
   <div class="box">
     <h5 class="title">Products</h5>
     <ul *ngFor="let product of selectedFormula.Products">
-      <li><span>Brand </span>{{product.Brand}}</li>
+      <li><span class="productBrand">Brand: </span>{{product.Brand}}</li>
       <li><span>Used Quantity: </span>{{product.UsedQuantity}} gr</li>
       <li><span>Code: </span>{{product.ColorCode}}</li>
     </ul>

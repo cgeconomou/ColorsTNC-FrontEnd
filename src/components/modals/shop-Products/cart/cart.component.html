@@ -24,9 +24,12 @@
                     [src]="product[0].PhotoUrl!=null ? product[0].PhotoUrl : emptyImageUrl"></td>
                 <td (click)="ProductDetails(product[0])" class="productName">{{product[0].Name}}</td>
                 <td>{{product.length}}</td>
-                <td></td>
                 <td>
-                  <button (click)="RemoveProduct(i,product[0])" class="btn btn-sm btn-danger">
+                  <button (click)="IncreaseProductQuantInCart(i,product[i])" class="btn plusBtn mx-1">+</button>
+                  <button (click)="DecreaseProductQuantInCart(i,product[i])" class="btn minusBtn">-</button>
+                </td>
+                <td>
+                  <button (click)="RemoveProduct(i,product[0],product)" class="btn btn-sm btn-danger">
                     <div class="bi bi-trash"></div>
                   </button>
                 </td>
@@ -35,7 +38,11 @@
           </table>
         </div>
         <div class="col-sm-4">
-          <app-paypal-buttons></app-paypal-buttons>
+          <app-paypal-form ></app-paypal-form>
+          <div class="mt-4">
+            <app-paypal-buttons [cartProducts]="productsInCart"></app-paypal-buttons>
+          </div>
+         
         </div>
       </div>
     </div>
