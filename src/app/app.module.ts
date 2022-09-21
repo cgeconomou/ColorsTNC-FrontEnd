@@ -30,7 +30,8 @@ import { ShopProductDetailsComponent } from '../components/modals/shop-Products/
 import { MiniCartViewComponent } from '../components/modals/shop-Products/mini-cart-view/mini-cart-view.component';
 import { PaypalButtonsComponent } from '../components/paypal-buttons/paypal-buttons.component';
 import { PaypalFormComponent } from '../components/paypal-form/paypal-form.component';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from '../components/footer/footer.component'
 
 
 
@@ -60,7 +61,8 @@ import { ReactiveFormsModule } from '@angular/forms'
     ShopProductDetailsComponent,
     MiniCartViewComponent,
     PaypalButtonsComponent,
-    PaypalFormComponent
+    PaypalFormComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
