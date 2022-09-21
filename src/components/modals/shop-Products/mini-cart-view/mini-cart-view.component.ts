@@ -19,7 +19,7 @@ export class MiniCartViewComponent implements OnInit {
   }
 
   ShowCartModal(){
-    this.shopCart.showCartModal = true;
+    // this.shopCart.showCartModal = true;
     this.shopCart.showMiniCartView = false;
   }
 

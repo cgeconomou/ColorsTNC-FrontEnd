@@ -15,12 +15,13 @@
     </thead>
     <tbody>
       <tr class="myTableHover" *ngFor="let customer of customers">
-        <td>.!.</td>
-        <td>{{customer.FullName}}</td>
-        <td>{{customer.PhoneNumber}}</td>
-        <td>{{customer.Email}}</td>
-        <td>{{customer.FormulaIds | json}}</td>
-        <td>
+        <td><img class="Images" (error)="this.customer.PhotoUrl= emptyImageUrl"
+          [src]="customer.PhotoUrl!=null ? halfPath + customer.PhotoUrl : emptyImageUrl"></td>
+        <td class="align-middle">{{customer.FullName}}</td>
+        <td class="align-middle">{{customer.PhoneNumber}}</td>
+        <td class="align-middle">{{customer.Email}}</td>
+        <td class="align-middle">{{customer.FormulaIds | json}}</td>
+        <td class="align-middle">
           <button (click)="DetailsView()" class="btn bi bi-info-circle" title="Details"></button>
           <button (click)="DetailsView()" class="btn bi bi-pen mx-2" title="Edit"></button>
           <button (click)="DeleteCustomerHandler(customer.Id)" class="btn bi bi-trash" title="Delete"></button>

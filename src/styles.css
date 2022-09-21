@@ -24,3 +24,13 @@ body{
   background-color:  rgb(255, 138, 138);
   color: #fff;
 }
+
+.Images{
+  width:150px;
+  height:150px;
+  border-radius: 6px;
+}
+
+.myTableHover:hover{
+  background-color: #eae5e5;
+}

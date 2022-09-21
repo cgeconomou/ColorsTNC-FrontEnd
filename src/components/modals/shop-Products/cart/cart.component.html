@@ -4,9 +4,11 @@
       <span>Το καλάθι σου</span>
       <input (click)="CloseCartModal()" class="exitBtn" type="submit" value="X">
     </div>
+
     <div id="content">
       <div class="row">
         <div class="col-sm-8">
+
           <table class="table">
             <thead>
               <tr>
@@ -17,7 +19,8 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody class="align-middle">
+            <tbody class="align-middle tBodyCart">
+              <div *ngIf="isEmpty" class="pt-3 px-3">Το καλάθι σου είναι άδειο!</div>
               <tr *ngFor="let product of productsInCart; index as i;">
                 <td> <img class="productImg" (click)="ProductDetails(product[0])"
                     (error)="this.product[0].PhotoUrl= emptyImageUrl"
@@ -38,11 +41,13 @@
           </table>
         </div>
         <div class="col-sm-4">
-          <app-paypal-form ></app-paypal-form>
-          <div class="mt-4">
-            <app-paypal-buttons [cartProducts]="productsInCart"></app-paypal-buttons>
+          <div>
+            <app-paypal-form></app-paypal-form>
           </div>
-         
+          <div class="mt-4">
+            <app-paypal-buttons *ngIf="cartService.payPalBtnVisible" [cartProducts]="productsInCart">
+            </app-paypal-buttons>
+          </div>
         </div>
       </div>
     </div>

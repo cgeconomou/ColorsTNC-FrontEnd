@@ -1,0 +1,9 @@
+.totalCartPrice{
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.paypalBtn{
+  background-color: #ffc439;
+  font-weight: bold;
+}

@@ -13,6 +13,8 @@ export class CustomersComponent implements OnInit {
 
   loadingSpinner: boolean = true;
   customers!: Customer[];
+  emptyImageUrl: string = "assets/Images/uploadPhoto.jpg";
+  halfPath: string = "https://localhost:44321/";
   constructor(private customerService: CustomerService, private router:Router, public createCustomerService:CreateCustomerService) { }
 
   DetailsView(){

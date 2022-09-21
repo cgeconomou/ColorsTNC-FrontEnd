@@ -31,7 +31,8 @@ import { MiniCartViewComponent } from '../components/modals/shop-Products/mini-c
 import { PaypalButtonsComponent } from '../components/paypal-buttons/paypal-buttons.component';
 import { PaypalFormComponent } from '../components/paypal-form/paypal-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FooterComponent } from '../components/footer/footer.component'
+import { FooterComponent } from '../components/footer/footer.component';
+import { OrderComponent } from '../components/order/order.component'
 
 
 
@@ -62,7 +63,8 @@ import { FooterComponent } from '../components/footer/footer.component'
     MiniCartViewComponent,
     PaypalButtonsComponent,
     PaypalFormComponent,
-    FooterComponent
+    FooterComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,7 @@ import { FooterComponent } from '../components/footer/footer.component'
     NgxPaginationModule,
     ReactiveFormsModule
   ],
-  providers: [UploadPhotoComponent,ProductComponent,CreateProductComponent],
+  providers: [UploadPhotoComponent,ProductComponent,CreateProductComponent, PaypalFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

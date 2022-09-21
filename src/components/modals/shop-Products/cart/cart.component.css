@@ -35,6 +35,7 @@
   flex-grow: 1;
   padding: 30px;
   font-size: 18px;
+
 }
 
 #actions{
@@ -102,3 +103,7 @@
   color: #fff;
   background-color: darkgreen;
 }
+
+/* .tBodyCart{
+  overflow-y: scroll;
+} */

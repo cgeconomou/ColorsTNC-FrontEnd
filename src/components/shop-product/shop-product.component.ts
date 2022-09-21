@@ -17,7 +17,7 @@ export class ShopProductComponent implements OnInit {
   cartProductArray: ShopProduct[] = [];
   selectedDetailsProduct!: ShopProduct;
   searchCategory!:string;
-  showCartModal: boolean = false;
+  // showCartModal: boolean = false;
   showProductDetailsModal: boolean = false;
   showMiniCartView: boolean = false;
   sortPrice: boolean = true;
@@ -44,19 +44,13 @@ export class ShopProductComponent implements OnInit {
     ) 
   }
 
-  HideModal(){
-   // this.showProductDetailsModal = false;
-    // this.showCartModal = false;
-    // this.showMiniCartView = false;
-  }
-
   ShowProductDetails(product: ShopProduct){
     this.showProductDetailsModal = true;
     this.selectedDetailsProduct = product;
   }
 
   ShowCart(){
-    this.showCartModal = true;
+    this.shopService.showCartModal = true;
     this.shopService.cartProductCount = parseFloat(this.shopService.cartProductCount.toFixed(2));
   }
 

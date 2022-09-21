@@ -10,6 +10,7 @@ export class ShopProductService {
 
   cartProductCount: number = 0;
   totalCartCost: number = 0;
+  showCartModal: boolean = false;
   private URL = "https://localhost:44321/api/ShopProduct";
   httpOptions = {
     headers: new HttpHeaders({'content-Type': 'application/json'})

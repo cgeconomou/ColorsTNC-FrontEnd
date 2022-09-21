@@ -1,0 +1,30 @@
+<app-loadingSpinner *ngIf="loadingSpinner"></app-loadingSpinner>
+<div class="container">
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th>FirstName</th>
+        <th>LastPhone</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>OrderCode</th>
+        <th>TotalCost</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="myTableHover" *ngFor="let order of orders">
+        <td class="align-middle">{{order.FirstName}}</td>
+        <td class="align-middle">{{order.LastName}}</td>
+        <td class="align-middle">{{order.Email}}</td>
+        <td class="align-middle">{{order.Address}}</td>
+        <td class="align-middle">{{order.Id}}</td>
+        <td class="align-middle">{{order.TotalCost}}&euro;</td>
+        <td class="align-middle">
+          <button class="btn bi bi-info-circle" title="Details"></button>
+          <button class="btn bi bi-trash" title="Delete"></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
