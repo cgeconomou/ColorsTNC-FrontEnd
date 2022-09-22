@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateProductComponent } from '../modals/product/create-product/create-product.component';
 import { CreateProductService } from '../modals/product/create-product/create-product.service';
 import { UpdateProductService } from '../modals/product/update-product/update-product.service';
 import { Product } from '../models/product';
@@ -11,13 +10,16 @@ import { ProductService } from './product.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
+  //Variables.....
   loadingSpinner: boolean = true;
   products!:Product[];
   showCreateProductForm: boolean = false;
   selectedProduct!: Product;
+  
+  //Constructor.....
   constructor(private productService:ProductService,public createProductService:CreateProductService, public updateProductService:UpdateProductService) { }
-
+  
+  //Methods.....
   GetProductsHandler():Product[]{
     this.productService.GetProducts().subscribe(
       {
@@ -25,8 +27,7 @@ export class ProductComponent implements OnInit {
         error: error => {console.log(error),this.loadingSpinner = false},
         complete: () => {console.log("Product Done"),this.loadingSpinner = false}
       }
-    )
-    
+    )   
     return this.products;
   }
 
@@ -45,6 +46,7 @@ export class ProductComponent implements OnInit {
     )
   }
 
+  //Hooks.....
   ngOnInit(): void {
     this.GetProductsHandler();
   }

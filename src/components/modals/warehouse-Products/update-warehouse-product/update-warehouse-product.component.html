@@ -1,0 +1,33 @@
+<div>
+    <div id="container">
+      <div id="header">
+        Update Warehouse Product
+      </div>
+      <div id="content">
+        <!-- <div class="input-group mb-3">
+          <app-upload-photo></app-upload-photo>
+        </div> -->
+        <div class="input-group mb-3">
+          <span class="input-group-text mySpanWidth">Brand</span>
+          <input value={{WarehouseProductToUpdate.Brand}} type="text" class="form-control" #warehouseProductBrand />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text mySpanWidth" id="basic-addon1">ColorCode</span>
+          <input value={{WarehouseProductToUpdate.ColorCode}} type="text" class="form-control" #warehouseProductColorCode>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text mySpanWidth">Tube Quantity</span>
+          <input value={{WarehouseProductToUpdate.TubeQuantity}} type="number" class="form-control" #warehouseProductTubeQuantity/>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text mySpanWidth">Toatal Quantity</span>
+          <input value={{WarehouseProductToUpdate.TotalQuantity}} type="number" class="form-control" #warehouseProductTotalQuantity/>
+        </div>
+      </div>
+      <div id="actions">
+        <button class="btn myBtn" (click)="UpdateWarehouseProductHandler(WarehouseProductToUpdate.Id, warehouseProductBrand.value, warehouseProductColorCode.value, warehouseProductTubeQuantity.valueAsNumber, warehouseProductTotalQuantity.valueAsNumber)">
+          Save</button>
+        <button class="btn exitBtn" (click)="toggleWarehouseProductModalsService.updateWarehouseProductModalIsVisible = false">Exit</button>
+      </div>
+    </div>
+  </div>

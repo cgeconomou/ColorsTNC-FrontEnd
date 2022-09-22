@@ -1,0 +1,42 @@
+<app-loadingSpinner *ngIf="loadingSpinner"></app-loadingSpinner>
+<div class="container">
+  <div>
+    <button class="btn createFormulaBtn mb-3" (click)="toggleWarehouseProductModalsService.createWarehouseProductModalIsVisible=true">Add New Product</button>
+  </div>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Brand</th>
+        <th>ColorCode</th>
+        <th>Tube Quantity (grammars)</th> 
+        <th>Total Quantity (grammars)</th> 
+        <th>Add or Remove Tubes</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="myTableHover" *ngFor="let warehouseProduct of warehouseProducts">
+        <td class="align-middle">{{warehouseProduct.Id}}</td>
+        <td class="align-middle">{{warehouseProduct.Brand}}</td>
+        <td class="align-middle">{{warehouseProduct.ColorCode}}</td>
+        <td class="align-middle">{{warehouseProduct.TubeQuantity}}g</td>
+        <td class="align-middle">{{warehouseProduct.TotalQuantity}}g</td>
+        <td>
+            <div class="align-middle">
+              <button class="btn bi bi-plus-circle mx-2" title="Add Tubes" (click)="AddTubesHandler(warehouseProduct)"></button>
+              <button class="btn  bi bi-minus" title="Remove Tubes" (click)="RemoveTubesHandler(warehouseProduct)"> <i class="bi bi-dash-circle"></i></button>
+            </div>
+          </td>
+        <td>
+          <div class="align-middle">
+            <button class="btn btn-sm bi bi-pen mx-2" title="Edit" (click)="SelectProductForUpdate(warehouseProduct)"></button>
+            <button class="btn btn-sm bi bi-trash" title="Delete"></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-create-warehouse-product *ngIf="toggleWarehouseProductModalsService.createWarehouseProductModalIsVisible"></app-create-warehouse-product>
+<app-update-warehouse-product *ngIf="toggleWarehouseProductModalsService.updateWarehouseProductModalIsVisible" [WarehouseProductToUpdate]="selectedWarehouseProductForUpdate"></app-update-warehouse-product>

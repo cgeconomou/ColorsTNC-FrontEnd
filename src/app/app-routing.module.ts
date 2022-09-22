@@ -9,6 +9,7 @@ import { HomePageComponent } from 'src/components/home-page/home-page.component'
 import { ProductComponent } from 'src/components/product/product.component';
 import { OrderComponent } from 'src/components/order/order.component';
 import { ShopProductComponent } from 'src/components/shop-product/shop-product.component';
+import { WarehouseProductComponent } from 'src/components/warehouse-product/warehouse-product.component';
 
 
 const routes: Routes = 
@@ -22,6 +23,8 @@ const routes: Routes =
   {path:"Product",component:ProductComponent},
   {path:"Formula",component:FormulaComponent},
   {path:"ShopProduct",component:ShopProductComponent},
+  {path:"WarehouseProduct",component:WarehouseProductComponent}
+
  
 ];
 
