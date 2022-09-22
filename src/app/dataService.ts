@@ -1,4 +1,5 @@
 import {Injectable } from "@angular/core";
+import { Customer } from "src/components/models/customer";
 
 import { Formula } from "src/components/models/formula";
 
@@ -8,15 +9,22 @@ import { Formula } from "src/components/models/formula";
 export class DataService{
 
    formula!: Formula;
- 
+   customer!: Customer;
 
-   SetTransferObject(data:Formula){
+   SetTransferFormula(data:Formula){
     this.formula = data;
    }
 
-   GetTransferObject():Formula{
+   GetTransferFormula():Formula{
     return this.formula;
    }
 
+   SetTransferCustomer(data:Customer){
+      this.customer = data;
+   }
+
+   GetTransferCustomer(){
+      return this.customer;
+   }
 }
 

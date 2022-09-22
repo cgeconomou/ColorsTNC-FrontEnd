@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/dataService';
 import { CreateCustomerService } from '../modals/customer/create-customer/create-customer.service';
 import { Customer } from '../models/customer';
 import { CustomerService } from './customer.service';
@@ -13,12 +14,14 @@ export class CustomersComponent implements OnInit {
 
   loadingSpinner: boolean = true;
   customers!: Customer[];
+  selectedCustomer!: Customer;
   emptyImageUrl: string = "assets/Images/uploadPhoto.jpg";
   halfPath: string = "https://localhost:44321/";
-  constructor(private customerService: CustomerService, private router:Router, public createCustomerService:CreateCustomerService) { }
+  constructor(private dataService: DataService, private customerService: CustomerService, private router:Router, public createCustomerService:CreateCustomerService) { }
 
-  DetailsView(){
-    this.router.navigate(['/Details-Customer'])
+  DetailsView(customer:Customer){
+    this.dataService.SetTransferCustomer(customer);
+    this.router.navigate(['/Details-Customer',customer])
   }
 
   GetCustomersHandler(): void{

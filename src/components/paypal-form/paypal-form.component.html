@@ -8,8 +8,10 @@
     <label for="email" class="form-group mt-2">Email:</label>
     <input type="text" id="email" class="form-control" placeholder="Enter your email" #email/>
     <label for="myAddress" class="form-group mt-2">Address:</label>
-    <input type="text" id="myAddress" class="form-control" placeholder="Enter your Address" #address/>
+    <input type="text" id="myAddress" class="form-control" placeholder="Enter your Address" #address
+    (input)="ChangeHasValueStatus(address.value)"/>
     <input type="submit" value="Συνέχεια και πληρωμή με PayPal" class="btn paypalBtn mt-2"
+    [disabled]="!inputHasValue"
     (click)="OnSumbitForm(fName.value,lName.value,email.value,address.value)"/>
   </form>
 </div>

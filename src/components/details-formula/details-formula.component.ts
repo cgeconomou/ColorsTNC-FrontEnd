@@ -17,7 +17,7 @@ export class DetailsFormulaComponent implements OnInit {
  
   ngOnInit(): void {
     console.log("Details on init");
-    this.selectedFormula = this.dataService.GetTransferObject()
+    this.selectedFormula = this.dataService.GetTransferFormula()
     console.log(this.selectedFormula);
   }
 

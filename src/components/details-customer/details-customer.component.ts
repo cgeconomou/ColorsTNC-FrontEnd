@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DataService } from 'src/app/dataService';
+import { Customer } from '../models/customer';
 
 @Component({
   selector: 'app-details-customer',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsCustomerComponent implements OnInit {
 
-  constructor() { }
+  selectedCustomer!: Customer;
+  halfPath: string = "https://localhost:44321/";
+  emptyImageUrl: string = "assets/Images/uploadPhoto.jpg";
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.selectedCustomer = this.dataService.GetTransferCustomer();
+    console.log(this.selectedCustomer);
   }
 
 }

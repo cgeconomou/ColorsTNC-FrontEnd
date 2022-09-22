@@ -14,12 +14,15 @@ import { PaypalService } from './paypal.service';
 export class PaypalFormComponent implements OnInit {
 
   
-  
+   inputHasValue: boolean = false;
+   firstName: string = " ";
+   submitNameMsg: string = "Συμλήρωσε την φόρμα!"
   constructor(public shopService:ShopProductService, private cartService: CartService, private paypalService: PaypalService) { }
 
   ngOnInit(): void {
-    
-    
+    if(this.firstName == " "){
+      this.inputHasValue = false;
+    }
   }
 
   OnSumbitForm(fName:string, lName:string, email:string, address:string){
@@ -31,8 +34,17 @@ export class PaypalFormComponent implements OnInit {
     this.paypalService.payPalFormData.TotalCost = this.shopService.totalCartCost;
     console.log(this.paypalService.payPalFormData);
     this.cartService.payPalBtnVisible = true;
+    this.inputHasValue = false;
   }
 
- 
+  ChangeHasValueStatus(name:string){
+    if(name == " "){
+      this.inputHasValue = false;
+    }
+    else{
+      this.inputHasValue = true;
+    }
+
+  }
 
 }

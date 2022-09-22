@@ -64,19 +64,18 @@ export class ShopProductComponent implements OnInit {
       this.cartProductArray.push(product)
       if(this.cartProducts.length == 0){
         this.cartProducts.push(this.cartProductArray);
-        console.log("MPIKA sthn prwth IF = O MEGALOS PINAKAS EINAI ADIOS",this.cartProducts.length);
       }
       else{
         for(let i=0; i<this.cartProducts.length; i++){
          if(this.cartProducts[i].includes(product)){
           this.cartProducts[i].push(product);
           productExists = true;
-          console.log(`MPIKA sthn prwth IF ths FOR = OPOTE VRIKE IDIO PRION,${this.cartProducts[i]} = SUBARRAY` );
+        
          }
         }
         if(productExists == false){
           this.cartProducts.push(this.cartProductArray);
-          console.log(`MPIKA sthn -2ND- IF ths FOR = OPOTE DEN VRIKE IDIO PRION,${this.cartProducts.length} = MHKOS MEGALOU PINAKA` );
+      
         }
       }
       product.Quantity -= 1;

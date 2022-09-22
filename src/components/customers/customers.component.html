@@ -22,8 +22,8 @@
         <td class="align-middle">{{customer.Email}}</td>
         <td class="align-middle">{{customer.FormulaIds | json}}</td>
         <td class="align-middle">
-          <button (click)="DetailsView()" class="btn bi bi-info-circle" title="Details"></button>
-          <button (click)="DetailsView()" class="btn bi bi-pen mx-2" title="Edit"></button>
+          <button (click)="DetailsView(customer)" class="btn bi bi-info-circle" title="Details"></button>
+          <button (click)="DetailsView(customer)" class="btn bi bi-pen mx-2" title="Edit"></button>
           <button (click)="DeleteCustomerHandler(customer.Id)" class="btn bi bi-trash" title="Delete"></button>
         </td>
 
@@ -33,4 +33,4 @@
 </div>
 
 
-<app-create-customer *ngIf="createCustomerService.showCreateCustomerForm"></app-create-customer>
+<app-create-customer *ngIf="createCustomerService.showCreateCustomerForm" ></app-create-customer>

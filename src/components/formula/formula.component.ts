@@ -38,7 +38,7 @@ export class FormulaComponent implements OnInit, OnChanges {
   }
 
   DetailsFormulaHandler(formula:Formula):void{
-     this.dataService.SetTransferObject(formula);
+     this.dataService.SetTransferFormula(formula);
      this.router.navigate(['/Details-Formula']);
   }
 

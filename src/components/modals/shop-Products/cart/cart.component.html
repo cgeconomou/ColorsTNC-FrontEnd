@@ -15,6 +15,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+              
                 <th></th>
                 <th></th>
               </tr>
@@ -26,6 +27,7 @@
                     (error)="this.product[0].PhotoUrl= emptyImageUrl"
                     [src]="product[0].PhotoUrl!=null ? product[0].PhotoUrl : emptyImageUrl"></td>
                 <td (click)="ProductDetails(product[0])" class="productName">{{product[0].Name}}</td>
+                <!-- <td>{{product[i].Price}}&euro;</td> -->
                 <td>{{product.length}}</td>
                 <td>
                   <button (click)="IncreaseProductQuantInCart(i,product[i])" class="btn plusBtn mx-1">+</button>
