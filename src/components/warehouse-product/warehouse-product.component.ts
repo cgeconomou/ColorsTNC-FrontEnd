@@ -60,7 +60,6 @@ export class WarehouseProductComponent implements OnInit {
   //Hooks....
   ngOnInit(): void {
     this.GetWarehouseProductsHandler();
-
   }
 
 }

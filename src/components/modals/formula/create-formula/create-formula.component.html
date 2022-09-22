@@ -1,48 +1,59 @@
 <div>
-  <div id="container">
-    <div id="header" class="">
-      Add new Formula
-    </div>
-    <div id="content">
-      <!-- <div class="input-group mb-3">
-        <app-upload-photo></app-upload-photo>
-      </div> -->
-      <div class="input-group mb-3">
-        <img [src]="emptyImageUrl" style="width:150px;height:150px">
-        <input type="file" (change)="OnFileSelected($event)" (change)="handleFileInput($any($event.target).files)">
-        <div>
-          <input type="button" class="btn myBtn" value="Upload" (click)="UploadPhotoHandler()">
+  <div id="container" >
+     <!-- //////////////////stage 1////////////////////////// -->
+    <div #createFormulaStage1Main>
+      <div id="header" class="">
+        Add new Formula
+      </div>
+      <div id="content">       
+        <div class="input-group mb-3">
+          <span class="input-group-text mySpanWidth">Name</span>
+          <input type="text" class="form-control" #formulaName />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text mySpanWidth">ServiceType</span>
+          <input type="text" class="form-control" #formulaServiceType />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text mySpanWidth">Duration</span>
+          <input  type="number" class="form-control" #formulaDuration />
+        </div>
+        <div class="input-group  mb-3">
+          <span class="input-group-text mySpanWidth">Cost</span>
+          <input type="number" class="form-control" #formulaCost />
+        </div>
+        <div class="input-group  mb-3">
+          <span class="input-group-text mySpanWidth">Products</span>
+          <select class="form-select"  [(ngModel)]="selectedProducts" multiple>
+            <option *ngFor="let product of products" [ngValue]="product">{{product.Brand}} </option>
+          </select>
         </div>
       </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text mySpanWidth">Name</span>
-        <input type="text" class="form-control" #formulaName />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text mySpanWidth">ServiceType</span>
-        <input type="text" class="form-control" #formulaServiceType />
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text mySpanWidth">Duration</span>
-        <input  type="number" class="form-control" #formulaDuration />
-      </div>
-      <div class="input-group  mb-3">
-        <span class="input-group-text mySpanWidth">Cost</span>
-        <input type="number" class="form-control" #formulaCost />
-      </div>
-      <div class="input-group  mb-3">
-        <span class="input-group-text mySpanWidth">Products</span>
-        <select class="form-select"  [(ngModel)]="selectedProducts" multiple>
-          <option *ngFor="let product of products" [ngValue]="product">{{product.Brand}} </option>
-        </select>
+      <div id="actions">
+        <button class="btn myBtn"
+          (click)="CreateFormulaHandler(formulaName.value, formulaServiceType.value, formulaDuration.value, formulaCost.valueAsNumber)">
+          Create</button>
+        <button class="btn exitBtn" (click)="createFormulaService.showCreateFormulaForm = false">Exit</button>
       </div>
     </div>
-    <div id="actions">
-      <button class="btn myBtn"
-        (click)="CreateFormulaHandler(formulaName.value, formulaServiceType.value, formulaDuration.value, formulaCost.valueAsNumber)">
-        Create</button>
-      <button class="btn exitBtn" (click)="createFormulaService.showCreateFormulaForm = false">Exit</button>
+
+    </div>
+
+    
+
+  <!-- //////////////////stage 2////////////////////////// -->
+  <div #createFormulaStage2Products>
+
+  </div>
+<!-- //////////////////stage 3////////////////////////// -->
+  <div #createFormulaStage3Photo>
+    <div class="input-group mb-3">
+      <img [src]="emptyImageUrl" style="width:150px;height:150px">
+      <input type="file" (change)="OnFileSelected($event)" (change)="handleFileInput($any($event.target).files)">
+      <div>
+        <input type="button" class="btn myBtn" value="Upload" (click)="UploadPhotoHandler()">
+      </div>
     </div>
   </div>
-  
+
 </div>

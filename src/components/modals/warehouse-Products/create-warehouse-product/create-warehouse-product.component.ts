@@ -19,7 +19,7 @@ export class CreateWarehouseProductComponent implements OnInit {
         {
           next: response => {this.warehouseProductComponent.GetWarehouseProductsHandler() ,console.log(response)},
           error: error => console.log(error),
-          complete: () => alert("Warehouse Product Done")
+          complete: () => alert("Warehouse Product Created")
         }
        )
   }
