@@ -35,6 +35,9 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
   showExtraProduct: boolean = false;
   testUrlPhoto!: string;
   
+  showStage1Main:boolean= true;
+  showStage2Products:boolean= false;
+  showStage3Photo:boolean= false;
 
   constructor(private domService: DomSanitizer ,private formulaComponent: FormulaComponent, public createFormulaService: CreateFormulaService, private formulaService: FormulaService, public photoService: UploadPhotoComponent | null,private http : HttpClient) { }
 

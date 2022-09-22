@@ -32,7 +32,10 @@ import { PaypalButtonsComponent } from '../components/paypal-buttons/paypal-butt
 import { PaypalFormComponent } from '../components/paypal-form/paypal-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from '../components/footer/footer.component';
-import { OrderComponent } from '../components/order/order.component'
+import { OrderComponent } from '../components/order/order.component';
+import { WarehouseProductComponent } from '../components/warehouse-product/warehouse-product.component';
+import { UpdateWarehouseProductComponent } from '../components/modals/warehouse-Products/update-warehouse-product/update-warehouse-product.component'
+import { CreateWarehouseProductComponent } from 'src/components/modals/warehouse-Products/create-warehouse-product/create-warehouse-product.component';
 
 
 
@@ -64,7 +67,10 @@ import { OrderComponent } from '../components/order/order.component'
     PaypalButtonsComponent,
     PaypalFormComponent,
     FooterComponent,
-    OrderComponent
+    OrderComponent,
+    WarehouseProductComponent,
+    CreateWarehouseProductComponent,
+    UpdateWarehouseProductComponent
   ],
   imports: [
     BrowserModule,
