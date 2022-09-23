@@ -18,6 +18,10 @@ export class WarehouseProductService {
   GetWarehouseProducts():Observable<WarehouseProduct[]>{
     return this.httpService.get<WarehouseProduct[]>(this.URL);
   }
+  GetWarehouseProduct(id:number):Observable<WarehouseProduct>{
+    const url = `${this.URL}/${id}`;
+    return this.httpService.get<WarehouseProduct>(url, this.httpOptions);
+  }
 
   CreateWarehouseProduct(myWarehouseProduct:WarehouseProduct):Observable<WarehouseProduct>{
     return this.httpService.post<WarehouseProduct>(this.URL,myWarehouseProduct,this.httpOptions)

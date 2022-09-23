@@ -10,6 +10,7 @@ import { Photo } from 'src/components/models/formulaPhoto';
 import { Observable, Subscriber } from 'rxjs';
 import { WarehouseProduct } from 'src/components/models/warehouseProduct';
 import { WarehouseProductService } from 'src/components/warehouse-product/warehouse-product.service';
+import { WarehouseProductComponent } from 'src/components/warehouse-product/warehouse-product.component';
 
 
 @Component({
@@ -20,9 +21,9 @@ import { WarehouseProductService } from 'src/components/warehouse-product/wareho
 export class CreateFormulaComponent implements OnInit, OnDestroy {
 
   @Input() formulaProducts!: Formula[];
-  selectedProducts: Product[]=[];
+  selectedProducts: Product[] = [];
   productsBrands!: string[];
-  
+
   productTest!: Product[];
   emptyImageUrl: string = "assets/Images/uploadPhoto.jpg";
   selectedFile!: File[];
@@ -35,25 +36,26 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
   formulaImage!: string;
   showExtraProduct: boolean = false;
   testUrlPhoto!: string;
-////////////////////////////////////////////////
+  ////////////////////////////////////////////////
   showStage1Main: boolean = true;
   showStage2Products: boolean = false;
   showStage3Photo: boolean = false;
-  formula!:any;
-  formulaName!:string;
-  formulaCost!:number;
-  formulaDuration!:string;
-  formulaServiceType!:string;
-  formulaPhotosUrl!:string;
+  formula!: any;
+  formulaName!: string;
+  formulaCost!: number;
+  formulaDuration!: string;
+  formulaServiceType!: string;
+  formulaPhotosUrl!: string;
   products!: Product[];
-  formulaCreationDate!:Date;
-  formulaId!:number;
-  warehouseProducts!:WarehouseProduct[];
-  selectedWarehouseProducts:WarehouseProduct[]= [];
-  selectedWarehouseProductsQuantities:number[] =[];
-  tempProduct!:Product;
+  formulaCreationDate!: Date;
+  formulaId!: number;
+  warehouseProducts!: WarehouseProduct[];
+  selectedWarehouseProducts: WarehouseProduct[] = [];
+  selectedWarehouseProductsQuantities: number[] = [];
+  selectedWarehouseProductIds: number[] = [];
+  tempProduct!: Product;
 
-  constructor(private formulaComponent: FormulaComponent, public createFormulaService: CreateFormulaService,private formulaService:FormulaService, private warehouseProductService: WarehouseProductService, public photoService: UploadPhotoComponent | null, private http: HttpClient) { }
+  constructor(private formulaComponent: FormulaComponent, public createFormulaService: CreateFormulaService, private formulaService: FormulaService, private warehouseProductService: WarehouseProductService, public photoService: UploadPhotoComponent | null, private http: HttpClient) { }
 
   ShowActivePage1() {
     this.showStage1Main = true;
@@ -76,50 +78,73 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
 
   // formulaName: string, formulaServiceType: string, formulaDuration: string, formulaCost: number
   CreateFormulaHandler(): void {
-    
     this.createFormulaService.showCreateFormulaForm = false;
     let formulaDate;
-
     this.formulaService.CreateFormula({ FormulaName: this.formulaName, CreationDate: formulaDate, Cost: this.formulaCost, Duration: this.formulaDuration, ServiceType: this.formulaServiceType, FormulasPhotosid: this.photoFormulaid, FormulasPhotosUrl: this.testUrlPhoto, Products: this.selectedProducts } as Formula)
       .subscribe(
         {
           next: response => { console.log("Next ", response) },
           error: error => console.log(error),
-          complete: () => { console.log("Create Done"), this.formulaComponent.GetAllFormulasHandler() }
+          complete: () => { console.log("Create Done"), this.formulaComponent.GetAllFormulasHandler(), this.UpdateWarehouseProductsHandler() }
         }
       )
   };
+  UpdateWarehouseProductsHandler(): void {
+    for (let i = 0; i < this.selectedWarehouseProducts.length; i++) {
+      
+      let id = this.selectedWarehouseProductIds[i];
+      this.warehouseProductService.GetWarehouseProduct(id).subscribe({
+        next: response => { 
+          console.log(response) 
+          let totalQuantity = response.TotalQuantity - this.selectedWarehouseProductsQuantities[i];
+          console.log("Checking if the front quantity changes",totalQuantity);
+          this.warehouseProductService.UpdateWarehouseProduct({Id: response.Id , Brand:response.Brand, ColorCode:response.ColorCode, TubeQuantity:response.TubeQuantity, TotalQuantity:totalQuantity} as WarehouseProduct).subscribe(
+            {
+              next: response => { console.log(response) },
+              error: error => console.log(error),
+              complete: () => console.log("Warehouse Product with id " + id + " was updated")
+            }
+          )
+        },
+        error: error => console.log(error),
+        complete: () => console.log("get 1 warehouse product was successfull")
+      })
+
+      
+    }
+  }
+
   GetWarehouseProductsHandler(): WarehouseProduct[] {
     this.warehouseProductService.GetWarehouseProducts().subscribe(
       {
         next: response => { this.warehouseProducts = response },
-        error: error => console.log(error) ,
-        complete: () => { console.log("WarehouseProducts Done")}
+        error: error => console.log(error),
+        complete: () => { console.log("WarehouseProducts Done") }
       }
     )
     return this.warehouseProducts;
   }
 
-  CreateFormulaStage1Form(): void{
+  CreateFormulaStage1Form(): void {
     this.ShowActivePage2();
   }
-  
-  // i:number =0;
-  
-  CreateFormulaStage2Products(){
-    for(let i=0; i<this.selectedWarehouseProducts.length; i++){
-      let temp:any =this.selectedWarehouseProducts[i];
-      let arr:string =temp.split('--');
+
+  CreateFormulaStage2Products() {
+    for (let i = 0; i < this.selectedWarehouseProducts.length; i++) {
+      let temp: any = this.selectedWarehouseProducts[i];
+      let arr: string = temp.split('--');
       let brand = arr[0];
       let colorCode = arr[1];
+      let id = arr[2];
       let usedQuantity = this.selectedWarehouseProductsQuantities[i];
-      this.tempProduct =({Brand:brand,ColorCode:colorCode, UsedQuantity:usedQuantity})as Product;
-      this.selectedProducts.push(this.tempProduct); 
+      this.tempProduct = ({ Brand: brand, ColorCode: colorCode, UsedQuantity: usedQuantity }) as Product;
+      this.selectedProducts.push(this.tempProduct);
+      this.selectedWarehouseProductIds.push(parseInt(id));
     }
     console.log(this.selectedProducts);
     this.ShowActivePage3();
   }
-  
+
   UploadPhotoHandler() {
     const filedata = new FormData();
     for (var i = 0; i < this.selectedFile.length; i++) {
@@ -136,7 +161,6 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
   }
 
   setSingleImage(imageId: number): string {
-
     const headers = new HttpHeaders();
     this.http.get('https://localhost:44321/api/ImageFormula?id=' + imageId, { headers, responseType: 'blob' })
       .subscribe((data: Blob) => {
@@ -154,8 +178,7 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
           console.log(img)
         });
       });
-    console.log("autp eiani to this formula")
-
+    console.log("autp einai to this.formula")
     console.log(this.formulaImage)
     return this.formulaImage;
   }
