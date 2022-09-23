@@ -6,4 +6,11 @@
 
 .myCarousel{
   height: 650px;
+    
+  width: max-content;
+}
+
+.carouselMiddle{
+  display: flex;
+  justify-content: center;
 }
