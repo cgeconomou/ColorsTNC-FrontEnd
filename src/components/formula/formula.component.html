@@ -31,7 +31,7 @@
         <td class="align-middle">{{formula?.ServiceType}}</td>
         <td class="align-middle">
           <ul class="myProductUl">
-            <li class="myProductLi" *ngFor="let product of formula?.Products">{{product.Brand}} - {{product.ColorCode}}</li>
+            <li class="myProductLi" *ngFor="let product of formula?.Products">{{product.Brand}} - {{product.ColorCode}},  {{product.UsedQuantity}}g used</li>
           </ul>
         </td>
         <td class="align-middle">
