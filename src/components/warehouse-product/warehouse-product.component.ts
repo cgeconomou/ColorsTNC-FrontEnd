@@ -36,7 +36,7 @@ export class WarehouseProductComponent implements OnInit {
       {
         next: response => { this.GetWarehouseProductsHandler(), console.log(response) },
         error: error => console.log(error),
-        complete: () => console.log("Update product Done")
+        complete: () => console.log("Update WarehouseProduct Done")
       }
     )
   }
@@ -47,15 +47,23 @@ export class WarehouseProductComponent implements OnInit {
         {
           next: response => { this.GetWarehouseProductsHandler(), console.log(response) },
           error: error => console.log(error),
-          complete: () => console.log("Update product Done")
+          complete: () => console.log("Update WarehouseProduct Done")
         }
       )
     }
+  }
+  DeleteWareHouseProductHandler(id:number){
+    this.warehouseProductService.DeleteWarehouseProduct(id).subscribe({
+       next: response => { console.log(response) },
+       error: error => console.log(error),
+       complete: () => {console.log("Delete WarehouseProduct Done"), this.GetWarehouseProductsHandler()}
+    })
   }
   SelectProductForUpdate(selectedWarehouseProduct:WarehouseProduct):void{
     this.selectedWarehouseProductForUpdate = selectedWarehouseProduct;
     this.toggleWarehouseProductModalsService.updateWarehouseProductModalIsVisible= true;
   }
+
 
   //Hooks....
   ngOnInit(): void {

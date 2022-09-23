@@ -205,6 +205,7 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
 
   GettingProducts(): void {
     this.products = this.formulaComponent.GetProducts()
+    console.log(this.products);
   }
 
   ShowProductToAdd(): void {
@@ -213,7 +214,7 @@ export class CreateFormulaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    //this.GettingProducts();
+    this.GettingProducts();
     this.GetWarehouseProductsHandler();
   }
 

@@ -20,9 +20,7 @@ export class PaypalFormComponent implements OnInit {
   constructor(public shopService:ShopProductService, private cartService: CartService, private paypalService: PaypalService) { }
 
   ngOnInit(): void {
-    if(this.firstName == " "){
-      this.inputHasValue = false;
-    }
+  
   }
 
   OnSumbitForm(fName:string, lName:string, email:string, address:string){
