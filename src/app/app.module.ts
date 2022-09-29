@@ -36,6 +36,8 @@ import { OrderComponent } from '../components/order/order.component';
 import { WarehouseProductComponent } from '../components/warehouse-product/warehouse-product.component';
 import { UpdateWarehouseProductComponent } from '../components/modals/warehouse-Products/update-warehouse-product/update-warehouse-product.component'
 import { CreateWarehouseProductComponent } from 'src/components/modals/warehouse-Products/create-warehouse-product/create-warehouse-product.component';
+import { SignInComponent } from '../components/sign-in/sign-in.component';
+import { SignUpComponent } from '../components/sign-up/sign-up.component';
 
 
 
@@ -70,7 +72,9 @@ import { CreateWarehouseProductComponent } from 'src/components/modals/warehouse
     OrderComponent,
     WarehouseProductComponent,
     CreateWarehouseProductComponent,
-    UpdateWarehouseProductComponent
+    UpdateWarehouseProductComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

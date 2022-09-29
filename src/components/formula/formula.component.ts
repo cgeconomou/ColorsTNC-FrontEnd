@@ -17,7 +17,7 @@ import { DataService } from 'src/app/dataService';
   styleUrls: ['./formula.component.css']
 })
 export class FormulaComponent implements OnInit, OnChanges {
-
+  
   loadingSpinner: boolean = true;
   formulas!: Formula[];
   selectedFormula!: Formula;

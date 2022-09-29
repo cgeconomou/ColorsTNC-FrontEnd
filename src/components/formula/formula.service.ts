@@ -15,7 +15,7 @@ export class FormulaService {
   constructor(private httpService: HttpClient) { }
 
   GetFormulas():Observable<Formula[]>{
-    return this.httpService.get<Formula[]>(this.URL);
+    return this.httpService.get<Formula[]>(this.URL,{headers:new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})});
   }
 
   CreateFormula(myFormula:Formula):Observable<Formula>{

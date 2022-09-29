@@ -16,7 +16,7 @@ export class CustomerService {
   constructor(private httpService: HttpClient) { }
 
   GetCustomers():Observable<Customer[]>{
-    return this.httpService.get<Customer[]>(this.URL);
+    return this.httpService.get<Customer[]>(this.URL,{headers:new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('userToken')})});
   }
 
   CreateCustomer(myCustomer:Customer):Observable<Customer>{
