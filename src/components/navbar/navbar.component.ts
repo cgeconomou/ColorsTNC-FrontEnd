@@ -11,6 +11,8 @@ import { UserService } from '../services/user.service';
 export class NavbarComponent implements OnInit {
 
   isCollapsed:boolean = true;
+  welcomeMessageIsVible:boolean = false;
+  
   constructor(private router: Router, public userService: UserService) { }
 
 
@@ -23,11 +25,22 @@ export class NavbarComponent implements OnInit {
     console.log(localStorage.getItem('userToken'));
     localStorage.removeItem('userToken');
     localStorage.removeItem('userRoles');
+    localStorage.removeItem('userName');
+    this.welcomeMessageIsVible= false;
     alert("Successfully Logged Out");
-
   }
+ showLogout(){
+  if(localStorage.getItem('userToken')==null)
+    return false;
+  this.welcomeMessageIsVible =true;
 
-  ngOnInit(): void {
+  return true;
+ }
+ welcomeMessage(){
+  return localStorage.getItem('userName');
+ }
+ 
+ngOnInit(): void {
   }
 
 }

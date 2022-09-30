@@ -44,6 +44,7 @@ import { AuthInterceptor } from 'src/auth/auth.interceptor';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +78,7 @@ import { AuthInterceptor } from 'src/auth/auth.interceptor';
     UpdateWarehouseProductComponent,
     SignInComponent,
     SignUpComponent
+    
   ],
   imports: [
     BrowserModule,

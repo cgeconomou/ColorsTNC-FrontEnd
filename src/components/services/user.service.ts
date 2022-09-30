@@ -7,7 +7,7 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
-
+  currentUserName!:string;
   readonly rootUrl = 'https://localhost:44321';
   // httpOptions = {
   //   headers: new HttpHeaders({'content-Type':'application/json'})
@@ -58,7 +58,7 @@ export class UserService {
         return;
       }
     });
-    console.log("testing the return value of method roleMatch", isMatch);
+   // console.log("testing the return value of method roleMatch", isMatch);
     return isMatch;
   }
 

@@ -16,15 +16,15 @@ export class SignInComponent implements OnInit {
 
 
   OnSubmit(userName:string, password:string){
-    this.userService.userAuthentication(userName,password).subscribe((data : any)=>{
-      localStorage.setItem('userToken',data.access_token);
-      localStorage.setItem('userRoles',data.role);
-      console.log(data);
-      this.router.navigate(['/Home-Page']);
-    },
-    (err : HttpErrorResponse)=>{
-      this.isLoginError = true;
-    });
+    // this.userService.userAuthentication(userName,password).subscribe((data : any)=>{
+    //   localStorage.setItem('userToken',data.access_token);
+    //   localStorage.setItem('userRoles',data.role);
+    //   console.log(data);
+    //   this.router.navigate(['/Home-Page']);
+    // },
+    // (err : HttpErrorResponse)=>{
+    //   this.isLoginError = true;
+    // });
 
     this.userService.userAuthentication(userName,password).subscribe(
       {
@@ -33,10 +33,13 @@ export class SignInComponent implements OnInit {
           localStorage.setItem('userToken',data.access_token);
           localStorage.setItem('userRoles',data.role);
           console.log(data);
+          localStorage.setItem('userName',userName);
           this.router.navigate(['/Home-Page']);
         },
         error: error => {this.isLoginError = true; console.log(error);},
-        complete: () => console.log("User Authendication Done")
+        complete: () => {
+          console.log("User Authendication Done")
+        }
       });
   }
 

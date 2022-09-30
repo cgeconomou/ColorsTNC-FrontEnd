@@ -18,13 +18,13 @@ import { AuthGuard } from 'src/auth/auth.guard';
 const routes: Routes = 
 [
   {path:"Home-Page",component:HomePageComponent},
-  {path:"Orders",component:OrderComponent},
+  {path:"Orders",component:OrderComponent,data:{roles:['Admin']},canActivate:[AuthGuard]},
   {path:"AboutUs",component:AboutusComponent},
-  {path:"Customers",component:CustomersComponent},
-  {path:"Details-Customer",component:DetailsCustomerComponent},
-  {path:"Details-Formula",component:DetailsFormulaComponent},
+  {path:"Customers",component:CustomersComponent,data:{roles:['Admin','Employee']},canActivate:[AuthGuard]},
+  {path:"Details-Customer",component:DetailsCustomerComponent,data:{roles:['Admin','Employee']},canActivate:[AuthGuard]},
+  {path:"Details-Formula",component:DetailsFormulaComponent,data:{roles:['Admin','Employee']},canActivate:[AuthGuard]},
   {path:"Product",component:ProductComponent},
-  {path:"Formula",component:FormulaComponent},
+  {path:"Formula",component:FormulaComponent,data:{roles:['Admin','Employee']},canActivate:[AuthGuard]},
   {path:"ShopProduct",component:ShopProductComponent},
   {path:"WarehouseProduct",component:WarehouseProductComponent,data:{roles:['Admin']},canActivate:[AuthGuard]},
   {path:"SignUp",component:SignUpComponent},

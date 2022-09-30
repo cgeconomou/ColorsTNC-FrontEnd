@@ -8,16 +8,16 @@
     <div class="collapse navbar-collapse" id="navbarResponsive" [class.collapse]="isCollapsed">
       <ul class="navbar-nav ms-auto ">
         <li class="nav-item"><a class="nav-link myItem" routerLink="/Home-Page">Home</a></li>
-        <li class="nav-item"><a class="nav-link myItem" routerLink="/Orders">Orders</a></li>
-        <li class="nav-item"><a class="nav-link myItem" routerLink="/Customers">Customers</a></li>
-        <!-- <li class="nav-item"><a class="nav-link myItem" routerLink="/Product">Products</a></li> -->
-        <li class="nav-item"><a class="nav-link myItem" routerLink="/Formula">Formulas</a></li>
+        <li *ngIf="userService.roleMatch(['Admin'])" class="nav-item"><a class="nav-link myItem" routerLink="/Orders">Orders</a></li>
+        <li *ngIf="userService.roleMatch(['Admin','Employee'])" class="nav-item"><a class="nav-link myItem" routerLink="/Customers">Customers</a></li>
+        <li *ngIf="userService.roleMatch(['Admin','Employee'])" class="nav-item"><a class="nav-link myItem" routerLink="/Formula">Formulas</a></li>
         <li class="nav-item"><a class="nav-link myItem" routerLink="/ShopProduct">Shop</a></li>
         <li class="nav-item"><a class="nav-link myItem" routerLink="/AboutUs">About Us</a></li>
         <li *ngIf="userService.roleMatch(['Admin'])" class="nav-item"><a class="nav-link myItem" routerLink="/WarehouseProduct">Admin Area</a></li>
         <li class="nav-item"><a class="nav-link myItem ms-lg-5" routerLink="/SignUp">Register</a></li>
-        <li class="nav-item"><a class="nav-link myItem" routerLink="/SignIn">Log In</a></li>
-        <li class="nav-item"><a class="nav-link myItem" routerLink="/Home-Page" (click)="Logout()">Log Out</a></li>
+        <li *ngIf="!showLogout()" class="nav-item"><a class="nav-link myItem" routerLink="/SignIn">Log In</a></li>
+        <li *ngIf="showLogout()" class="nav-item"><a class="nav-link myItem" routerLink="/Home-Page" (click)="Logout()">Log Out</a></li>
+        <li *ngIf="welcomeMessageIsVible" class="nav-item ms-lg-5"><a class="nav-link myItem" >Welcome {{welcomeMessage()}}!</a></li>
       </ul>
     </div>
   </div>

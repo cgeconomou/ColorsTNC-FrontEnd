@@ -51,7 +51,11 @@ export class SignUpComponent implements OnInit {
   }
 
   OnSubmit(form: NgForm) {
-    var newUserRoles = this.roles.filter(x => x.selected).map(y => y.Name);
+    var newUserRoles = this.roles?.filter(x => x?.selected).map(y => y?.Name);
+    if(newUserRoles == undefined ){
+      newUserRoles = [];
+    }
+    console.log(newUserRoles);
     this.userService.registerUser(form.value,newUserRoles)
       .subscribe((data: any) => {
         console.log("-----------------");
