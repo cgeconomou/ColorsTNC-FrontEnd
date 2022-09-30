@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   isCollapsed:boolean = true;
-  constructor(private router: Router) { }
+  constructor(private router: Router, public userService: UserService) { }
 
 
 

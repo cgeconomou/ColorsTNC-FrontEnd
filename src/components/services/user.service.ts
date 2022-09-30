@@ -15,14 +15,14 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  registerUser(user: User):Observable<User> {
+  registerUser(user: User, newUserRoles:string[]):Observable<User> {
     const body = {
       UserName: user.UserName,
       Password: user.Password,
       Email: user.Email,
       FirstName: user.FirstName,
       LastName: user.LastName,
-      //Roles: roles
+      Roles: newUserRoles
     }
     console.log(user);
     var reqHeader = new HttpHeaders({'No-Auth':'True'});
@@ -43,7 +43,7 @@ export class UserService {
 
   getAllRoles() {
     var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
-    return this.http.get(this.rootUrl + '/api/GetAllRoles', { headers: reqHeader });
+    return this.http.get(this.rootUrl + '/api/GetAllRoles');
   }
 
   roleMatch(allowedRoles:string[]): boolean {

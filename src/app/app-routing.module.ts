@@ -26,7 +26,7 @@ const routes: Routes =
   {path:"Product",component:ProductComponent},
   {path:"Formula",component:FormulaComponent},
   {path:"ShopProduct",component:ShopProductComponent},
-  {path:"WarehouseProduct",component:WarehouseProductComponent},
+  {path:"WarehouseProduct",component:WarehouseProductComponent,data:{roles:['Admin']}},
   {path:"SignUp",component:SignUpComponent},
   {path:"SignIn",component:SignInComponent},
   {path:'', redirectTo:'/login', pathMatch : 'full'}
