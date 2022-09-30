@@ -15,7 +15,7 @@ import { DetailsCustomerComponent } from '../components/details-customer/details
 import { FormulaComponent } from '../components/formula/formula.component';
 import { CreateCustomerComponent } from '../components/modals/customer/create-customer/create-customer.component';
 import { CreateFormulaComponent } from '../components/modals/formula/create-formula/create-formula.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UpdateFormulaComponent } from 'src/components/modals/formula/update-formula/update-formula.component';
 import { UploadPhotoComponent } from 'src/components/upload-photo/upload-photo.component';
 import { ProductComponent } from '../components/product/product.component';
@@ -36,6 +36,11 @@ import { OrderComponent } from '../components/order/order.component';
 import { WarehouseProductComponent } from '../components/warehouse-product/warehouse-product.component';
 import { UpdateWarehouseProductComponent } from '../components/modals/warehouse-Products/update-warehouse-product/update-warehouse-product.component'
 import { CreateWarehouseProductComponent } from 'src/components/modals/warehouse-Products/create-warehouse-product/create-warehouse-product.component';
+import { SignInComponent } from '../components/sign-in/sign-in.component';
+import { SignUpComponent } from '../components/sign-up/sign-up.component';
+import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthInterceptor } from 'src/auth/auth.interceptor';
+
 
 
 
@@ -70,7 +75,10 @@ import { CreateWarehouseProductComponent } from 'src/components/modals/warehouse
     OrderComponent,
     WarehouseProductComponent,
     CreateWarehouseProductComponent,
-    UpdateWarehouseProductComponent
+    UpdateWarehouseProductComponent,
+    SignInComponent,
+    SignUpComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -83,7 +91,13 @@ import { CreateWarehouseProductComponent } from 'src/components/modals/warehouse
     NgxPaginationModule,
     ReactiveFormsModule
   ],
-  providers: [UploadPhotoComponent,ProductComponent,CreateProductComponent, PaypalFormComponent],
+  providers: [UploadPhotoComponent,ProductComponent,CreateProductComponent, PaypalFormComponent,AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
