@@ -18,7 +18,7 @@ import { AuthGuard } from 'src/auth/auth.guard';
 const routes: Routes = 
 [
   {path:"Home-Page",component:HomePageComponent},
-  {path:"Orders",component:OrderComponent,canActivate:[AuthGuard]},
+  {path:"Orders",component:OrderComponent},
   {path:"AboutUs",component:AboutusComponent},
   {path:"Customers",component:CustomersComponent},
   {path:"Details-Customer",component:DetailsCustomerComponent},
@@ -26,7 +26,7 @@ const routes: Routes =
   {path:"Product",component:ProductComponent},
   {path:"Formula",component:FormulaComponent},
   {path:"ShopProduct",component:ShopProductComponent},
-  {path:"WarehouseProduct",component:WarehouseProductComponent,data:{roles:['Admin']}},
+  {path:"WarehouseProduct",component:WarehouseProductComponent,data:{roles:['Admin']},canActivate:[AuthGuard]},
   {path:"SignUp",component:SignUpComponent},
   {path:"SignIn",component:SignInComponent},
   {path:'', redirectTo:'/login', pathMatch : 'full'}

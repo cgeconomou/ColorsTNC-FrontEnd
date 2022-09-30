@@ -39,7 +39,7 @@ import { CreateWarehouseProductComponent } from 'src/components/modals/warehouse
 import { SignInComponent } from '../components/sign-in/sign-in.component';
 import { SignUpComponent } from '../components/sign-up/sign-up.component';
 import { AuthGuard } from 'src/auth/auth.guard';
-//import { AuthInterceptor } from 'src/auth/auth.interceptor';
+import { AuthInterceptor } from 'src/auth/auth.interceptor';
 
 
 
@@ -90,11 +90,11 @@ import { AuthGuard } from 'src/auth/auth.guard';
     ReactiveFormsModule
   ],
   providers: [UploadPhotoComponent,ProductComponent,CreateProductComponent, PaypalFormComponent,AuthGuard,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true
-    // }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

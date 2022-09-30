@@ -18,13 +18,21 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    this.userService.getAllRoles().subscribe(
-      (data : any)=>{
-        console.log("check gia subscribe");
-        data.forEach((obj:any) => obj.selected = false);
-        this.roles = data;
-      }
-    );
+    
+    var userRoles:string[]=JSON.parse(localStorage.getItem('userRoles')|| 'null');
+    var match;    
+    if (userRoles) {
+      match = this.userService.roleMatch(userRoles);
+    }
+      if (match){
+        this.userService.getAllRoles().subscribe(
+          (data : any)=>{
+            console.log("check gia subscribe");
+            data.forEach((obj:any) => obj.selected = false);
+            this.roles = data;
+          }
+        );
+    }
   }
 
   resetForm(form?: NgForm) {

@@ -30,7 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 ))
         }
         else {
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/SignIn');
         }
         throw new Error("Intercept error from last line, (throw)");
     }

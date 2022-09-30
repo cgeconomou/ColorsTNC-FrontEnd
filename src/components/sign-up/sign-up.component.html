@@ -32,7 +32,7 @@
     <div class="row" *ngIf="roles">
       <ul>
         <li *ngFor="let item of roles;let i = index">
-          <div *ngIf="userService.roleMatch(['Admin'])">
+          <div>
             <input type="checkbox" [id]="'roles-'+i" value="{{item.Id}}" [checked]="item.selected"
               (change)="updateSelectedRoles(i)">
             <label [for]="'roles-'+i">{{item.Name}}</label>

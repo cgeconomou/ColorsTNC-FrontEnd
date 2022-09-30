@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
   Logout() {
     console.log(localStorage.getItem('userToken'));
     localStorage.removeItem('userToken');
+    localStorage.removeItem('userRoles');
     alert("Successfully Logged Out");
 
   }
